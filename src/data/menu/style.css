@@ -4,3 +4,7 @@ a[id] {display:block; cursor:pointer; text-decoration:none; color:#000; padding:
 a[id]:hover {background-color:#ccc}
 #toggle, #report {display:none}
 #refresh {display:none; text-align:center; font-size:200%; padding:10px; font-weight:bold; color:#cc4223}
+
+#nothanks {background:#eed28c; padding:10px; font-size:12px; text-align:left; border:1px solid #cc4223; border-radius:5px}
+	#nothanks h4 {margin:0; padding:0 0 5px}
+	#nothanks a {font-weight:bold; color:#b03631; text-decoration:none}

@@ -1,34 +1,17 @@
 (function() {
 	const classname = Math.random().toString(36).replace(/[^a-z]+/g, '');
 	
-	var l = document.location,
+	var url = document.location.href,
 		is_audioboom = false,
 		is_dailymotion = false,
-		is_dailybuzz = false,
-		is_playerclipslaliga = false;
+		is_dailybuzz = false;
 	
-	switch (l.hostname) {
-		
-		case 'embeds.audioboom.com':
-			is_audioboom = true;
-			break;
-		
-		case 'www.dailymotion.com':
-			is_dailymotion = l.pathname.indexOf('/embed') === 0;
-			break;
-		
-		case 'geo.dailymotion.com':
-			is_dailymotion = l.pathname.indexOf('/player') === 0;
-			break;
-		
-		case 'dailybuzz.nl':
-			is_dailybuzz = l.pathname.indexOf('/buzz/embed') === 0;
-			break;
-		
-		case 'playerclipslaliga.tv':
-			is_playerclipslaliga = true;
-			break;
-	}
+	if (url.indexOf('embeds.audioboom.com') > -1)
+		is_audioboom = true;
+	else if (url.indexOf('dailymotion.com/embed') > -1)
+		is_dailymotion = true;
+	else if (url.indexOf('dailybuzz.nl/buzz/embed') > -1)
+		is_dailybuzz = true;
 	
 	
 	function searchEmbeds() {
@@ -58,17 +41,16 @@
 				});
 			}
 			
-			// playerclipslaliga.tv iframe embeds
-			else if (is_playerclipslaliga) {
-				document.querySelectorAll('#cookies button[onclick*="saveCookiesSelection"]:not(.' + classname + ')').forEach(function(button) {
-					button.className += ' ' + classname;
-					button.click();
-				});
-			}
-			
-			// Give up
 			else {
-				return;
+				// Twitter
+				document.querySelectorAll('.twitter-tweet-rendered:not(.' + classname + ')').forEach(function(e) {
+					var button = e.shadowRoot.querySelector('.js-interstitial:not(.u-hidden) .js-cookieConsentButton');
+					
+					if (button) {
+						e.className += ' ' + classname;
+						button.click();
+					}
+				});
 			}
 			
 			searchEmbeds();

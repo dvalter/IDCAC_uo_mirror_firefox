@@ -73,6 +73,21 @@
     "description": "Menu option."
   },
   
+  "menuNothanksTitle": {
+    "message": "Er du træt af nyhedsbrev-popups?",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText1": {
+    "message": "Prøv ut min nye",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText2": {
+    "message": "webbrowserudvidelse - det vil blokere dem og så meget mere for kun 9,85€/år!",
+    "description": "Menu no thanks extension promo."
+  },
+  
   "optionsTitle": {
     "message": "Indstillinger",
     "description": "Title for the options page."

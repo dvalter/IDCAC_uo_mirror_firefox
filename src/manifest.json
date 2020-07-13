@@ -1,11 +1,15 @@
 {
-"update_url": "https://clients2.google.com/service/update2/crx",
-
     "manifest_version": 2,
     "name": "__MSG_extensionName__",
     "short_name": "__MSG_extensionDescription__",
     "default_locale": "en",
-    "version": "3.4.3",
+    "version": "3.1.9",
+    "applications": {
+        "gecko": {
+            "id": "jid1-KKzOGWgsW3Ao4Q@jetpack",
+            "strict_min_version": "56.0"
+        }
+    },
     "icons": {
         "16": "icons/16.png",
         "48": "icons/48.png",
@@ -30,7 +34,7 @@
     },
     "options_ui": {
         "page": "data/options.html",
-        "chrome_style": true
+        "browser_style": true
     },
     "browser_action": {
         "default_popup": "data/menu/index.html",

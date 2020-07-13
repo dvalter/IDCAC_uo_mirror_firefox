@@ -73,6 +73,21 @@
     "description": "Menu option."
   },
   
+  "menuNothanksTitle": {
+    "message": "Máte dosť vyskakovacích okien newsletterov?",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText1": {
+    "message": "Vyskúšajte novinky",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText2": {
+    "message": "rozšírenie pre prehliadač - zablokujte ich a ešte oveľa viac len za €9.85 ročne!",
+    "description": "Menu no thanks extension promo."
+  },
+  
   "optionsTitle": {
     "message": "Nastavenia",
     "description": "Title for the options page."

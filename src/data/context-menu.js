@@ -2,7 +2,13 @@
 
 var cached_rules = {},
 	whitelisted_domains = {},
-	tab_list = {};
+	cookie_warning_dismissed_domains = {},
+	tab_list = {},
+	xml_tabs = {};
+
+
+// FF only: debugging mode
+var debug_mode = false;
 
 
 // Common functions
@@ -22,6 +28,31 @@ function getHostname(url, cleanup)
 	{
 		return false;
 	}
+}
+
+
+// Badges
+
+function setBadge(tabId, text) {
+	if (!chrome.browserAction.setBadgeText)
+		return;
+	
+	chrome.browserAction.setBadgeText({text: text || '', tabId: tabId});
+	
+	if (chrome.browserAction.setBadgeBackgroundColor)
+		chrome.browserAction.setBadgeBackgroundColor({color: '#646464', tabId: tabId});
+}
+
+function setSuccessBadge(tabId) {
+	setBadge(tabId, '✅');
+}
+
+function setDisabledBadge(tabId) {
+	setBadge(tabId, '⛔');
+}
+
+function resetBadge(tabId) {
+	setBadge(tabId);
 }
 
 
@@ -107,6 +138,11 @@ function getPreparedTab(tab)
 				tab.host_levels.push(parts.slice(-1*i).join('.'));
 			
 			tab.whitelisted = isWhitelisted(tab);
+			
+			if (tab.whitelisted)
+				setDisabledBadge(tab.id || tab.tabId);
+			else if (cookie_warning_dismissed_domains[tab.hostname])
+				setSuccessBadge(tab.id || tab.tabId);
 		}
 	}
 	
@@ -115,7 +151,9 @@ function getPreparedTab(tab)
 
 function onCreatedListener(tab)
 {
-    tab_list[tab.id] = getPreparedTab(tab);
+	resetBadge(tab.id);
+	
+	tab_list[tab.id] = getPreparedTab(tab);
 }
 
 function onUpdatedListener(tabId, changeInfo, tab) {
@@ -154,6 +192,22 @@ chrome.runtime.onInstalled.addListener(function(d){
 	
 	if (d.reason == "update" && chrome.runtime.getManifest().version > d.previousVersion)
 		recreateTabList();
+	
+	
+	// FF only: debugging mode
+	
+	if (d.temporary && d.temporary === true)
+	{
+		recreateTabList();
+		debug_mode = true;
+		
+		chrome.notifications.create('debug', {
+			type: "basic",
+			title: "IDCAC debugging mode",
+			message: "You have installed IDCAC in debugging mode. You will be notified when custom rules get applied to websites.",
+			iconUrl: "icons/48.png"
+		});
+	}
 });
 
 
@@ -161,21 +215,7 @@ chrome.runtime.onInstalled.addListener(function(d){
 
 function blockUrlCallback(d)
 {
-	// Cached request: find the appropriate tab
-	
-	if (d.tabId == -1 && d.initiator) {
-		let hostname = getHostname(d.initiator, true);
-		
-		for (let tabId in tab_list) {
-			if (tab_list[tabId].hostname == getHostname(d.initiator, true)) {
-				d.tabId = parseInt(tabId);
-				break;
-			}
-		}
-	}
-	
-	
-	if (tab_list[d.tabId] && !tab_list[d.tabId].whitelisted && d.url)
+	if (tab_list[d.tabId] && !tab_list[d.tabId].whitelisted && d.url && d.url.indexOf(',') == -1)
 	{
 		var clean_url = d.url.split('?')[0];
 		
@@ -200,6 +240,17 @@ function blockUrlCallback(d)
 									if (group_filters[i].e[exception] == tab_list[d.tabId].host_levels[level])
 										return {cancel:false};
 						
+						if (debug_mode) {
+							chrome.notifications.create('request_blocked', {
+								type: "basic",
+								title: "IDCAC debugging mode",
+								message: "Block pattern found: " + group_filters[i].r,
+								iconUrl: "icons/48.png"
+							});
+						}
+						
+						setSuccessBadge(d.tabId);
+						
 						return {cancel:true};
 					}
 				}
@@ -223,6 +274,17 @@ function blockUrlCallback(d)
 							if (group_filters[i].e[exception] == tab_list[d.tabId].host_levels[level])
 								return {cancel:false};
 				
+				if (debug_mode) {
+					chrome.notifications.create('request_blocked', {
+						type: "basic",
+						title: "IDCAC debugging mode",
+						message: "Block pattern found: " + group_filters[i].r,
+						iconUrl: "icons/48.png"
+					});
+				}
+				
+				setSuccessBadge(d.tabId);
+				
 				return {cancel:true};
 			}
 		}
@@ -239,8 +301,24 @@ function blockUrlCallback(d)
 					var rules = block_urls.specific[tab_list[d.tabId].host_levels[level]];
 					
 					for (var i in rules)
-						if (d.url.indexOf(rules[i]) > -1)
+					{
+						if ((rules[i].q && d.url.indexOf(rules[i].r) > -1) || (!rules[i].q && clean_url.indexOf(rules[i].r) > -1))
+						{
+							if (debug_mode)
+							{
+								chrome.notifications.create('blocked', {
+									type: "basic",
+									title: "IDCAC debugging mode",
+									message: "Site specific block pattern found: " + rules[i].r,
+									iconUrl: "icons/48.png"
+								});
+							}
+							
+							setSuccessBadge(d.tabId);
+							
 							return {cancel:true};
+						}
+					}
 				}
 			}
 		}
@@ -250,6 +328,21 @@ function blockUrlCallback(d)
 }
 
 chrome.webRequest.onBeforeRequest.addListener(blockUrlCallback, {urls:["http://*/*", "https://*/*"], types:["script","stylesheet","xmlhttprequest"]}, ["blocking"]);
+
+
+// Detect content type (XML related Firefox bug)
+
+chrome.webRequest.onHeadersReceived.addListener(function(d) {
+	if (tab_list[d.tabId]) {
+		d.responseHeaders.forEach(function(h) {
+			if (h.name == "Content-Type" || h.name == "content-type") {
+				xml_tabs[d.tabId] = h.value.indexOf("/xml") > -1;
+			}
+		});
+	}
+	
+	return {cancel:false};
+}, {urls:["http://*/*", "https://*/*"], types:["main_frame"]}, ["blocking", "responseHeaders"]);
 
 
 // Reporting
@@ -291,24 +384,33 @@ function activateDomain(hostname, tabId, frameId)
 	if (!cached_rules[hostname])
 		return false;
 	
-	let r = cached_rules[hostname],
-		status = false;
+	var r = cached_rules[hostname];
 	
-	if (typeof r.s != 'undefined') {
-		chrome.tabs.insertCSS(tabId, {code: r.s, frameId: frameId, matchAboutBlank: true, runAt: 'document_start'});
-		status = true;
-	}
-	else if (typeof r.c != 'undefined') {
-		chrome.tabs.insertCSS(tabId, {code: commons[r.c], frameId: frameId, matchAboutBlank: true, runAt: 'document_start'});
-		status = true;
+	if (typeof r.s != 'undefined')
+		chrome.tabs.insertCSS(tabId, {code: r.s, frameId: frameId, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_start'});
+	else if (typeof r.c != 'undefined')
+		chrome.tabs.insertCSS(tabId, {code: commons[r.c], frameId: frameId, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_start'});
+	else if (typeof r.j != 'undefined')
+		chrome.tabs.executeScript(tabId, {file: 'data/js/'+(r.j > 0 ? 'common'+r.j : hostname)+'.js', frameId: frameId, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_end'});
+	else
+		return false;
+	
+	setSuccessBadge(tabId);
+	
+	
+	// FF only: debugging mode
+	
+	if (debug_mode && !frameId)
+	{
+		chrome.notifications.create('applied', {
+			type: "basic",
+			title: "IDCAC debugging mode",
+			message: "Custom rule applied on " + hostname,
+			iconUrl: "icons/48.png"
+		});
 	}
 	
-	if (typeof r.j != 'undefined') {
-		chrome.tabs.executeScript(tabId, {file: 'data/js/'+(r.j > 0 ? 'common'+r.j : hostname)+'.js', frameId: frameId, matchAboutBlank: true, runAt: 'document_end'});
-		status = true;
-	}
-	
-	return status;
+	return true;
 }
 
 
@@ -321,7 +423,7 @@ function doTheMagic(tabId, frameId, anotherTry)
 		return;
 	
 	// Common CSS rules
-	chrome.tabs.insertCSS(tabId, {file: "data/css/common.css", frameId: frameId || 0, matchAboutBlank: true, runAt: 'document_start'}, function() {
+	chrome.tabs.insertCSS(tabId, {file: "data/css/common.css", frameId: frameId || 0, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_start'}, function() {
 	
 		// A failure? Retry.
 		
@@ -336,7 +438,7 @@ function doTheMagic(tabId, frameId, anotherTry)
 		
 		
 		// Common social embeds
-		chrome.tabs.executeScript(tabId, {file:'data/js/embeds.js', frameId: frameId || 0, matchAboutBlank: true, runAt: 'document_end'}, function() {});
+		chrome.tabs.executeScript(tabId, {file:'data/js/embeds.js', frameId: frameId || 0, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_end'}, function() {});
 		
 		if (activateDomain(tab_list[tabId].hostname, tabId, frameId || 0))
 			return;
@@ -346,7 +448,7 @@ function doTheMagic(tabId, frameId, anotherTry)
 				return true;
 		
 		// Common JS rules when custom rules don't exist
-		chrome.tabs.executeScript(tabId, {file:'data/js/common.js', frameId: frameId || 0, matchAboutBlank: true, runAt: 'document_end'}, function() {});
+		chrome.tabs.executeScript(tabId, {file:'data/js/common.js', frameId: frameId || 0, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_end'}, function() {});
 	});
 }
 
@@ -355,6 +457,8 @@ chrome.webNavigation.onCommitted.addListener(function(tab) {
 	if (tab.frameId > 0)
 		return;
 	
+	resetBadge(tab.tabId);
+
 	tab_list[tab.tabId] = getPreparedTab(tab);
 	
 	doTheMagic(tab.tabId);
@@ -362,8 +466,7 @@ chrome.webNavigation.onCommitted.addListener(function(tab) {
 
 
 chrome.webRequest.onResponseStarted.addListener(function(tab) {
-	if (tab.frameId > 0)
-		doTheMagic(tab.tabId, tab.frameId);
+	doTheMagic(tab.tabId, tab.frameId);
 }, {urls: ['<all_urls>'], types: ['sub_frame']});
 
 
@@ -372,26 +475,27 @@ chrome.webRequest.onResponseStarted.addListener(function(tab) {
 chrome.runtime.onInstalled.addListener(function(d){
 	if (d.reason == "update" && chrome.runtime.getManifest().version > d.previousVersion)
 	{
-		chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/whats-new/acquisition/"});
+		chrome.browserAction.setIcon({path: "icons/32.gif"});
 		
-// 		chrome.notifications.create('update', {
-// 			type: "basic",
-// 			title: "Big summer update - I don't care about cookies",
-// 			message: "Support the project, please. Visit i-dont-care-about-cookies.eu",
-// 			iconUrl: "icons/48.png"/*,
-// 			buttons:[{title: chrome.i18n.getMessage("menuSupport")}]*/
-// 		});
-// 		
-// 		// chrome.notifications.onButtonClicked.addListener(function(){
-// 		//	chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/"});
-// 		// });
+		setTimeout(function(){
+			chrome.browserAction.setIcon({path: "icons/32.png"});
+		}, 4000);
+		
+// 		chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/whats-new/2019/?b=f"});
+		
+		chrome.notifications.create('update', {
+			type: "basic",
+			title: "Big summer update - I don't care about cookies",
+			message: "Support the project, please. Visit i-dont-care-about-cookies.eu",
+			iconUrl: "icons/48.png"
+		});
 	}
 	
 	if (d.reason == "install") {
 		chrome.storage.local.get('is_installed', function(r) {
 			if (typeof r.is_installed == 'undefined') {
 				chrome.storage.local.set({'is_installed': true}, function() {
-// 					chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu"});
+					// chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu"});
 				});
 			}
 		});
@@ -428,6 +532,21 @@ chrome.runtime.onMessage.addListener(function(request, info, sendResponse) {
 				chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/"});
 			else if (request.command == 'open_options_page')
 				chrome.tabs.create({url:chrome.runtime.getURL('data/options.html')});
+			else if (request.command == 'open_ecosia_page')
+				chrome.tabs.create({url:'http://bit.ly/2NCamFa'});
+			else if (request.command == 'cookie_warning_dismissed' && request.url) {
+				cookie_warning_dismissed_domains[getHostname(request.url, true)] = true;
+				
+				if (debug_mode && request.debug)
+				{
+					chrome.notifications.create('clicked', {
+						type: "basic",
+						title: "IDCAC debugging mode",
+						message: "Click element found: " + request.debug,
+						iconUrl: "icons/48.png"
+					});
+				}
+			}
 		}
 	}
 });

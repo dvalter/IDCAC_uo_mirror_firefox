@@ -73,6 +73,21 @@
     "description": "Menu option."
   },
   
+  "menuNothanksTitle": {
+    "message": "メルマガのポップアップに飽き飽きですか?",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText1": {
+    "message": "新しい",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText2": {
+    "message": "ブラウザ拡張をお試しください - 年€9.85でそれらや他のサイトをブロックします!",
+    "description": "Menu no thanks extension promo."
+  },
+  
   "optionsTitle": {
     "message": "設定",
     "description": "Title for the options page."

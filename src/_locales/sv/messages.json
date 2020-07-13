@@ -73,6 +73,21 @@
     "description": "Menu option."
   },
   
+  "menuNothanksTitle": {
+    "message": "Trött på pop-ups för nyhetsbrev?",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText1": {
+    "message": "Testa mitt nya",
+    "description": "Menu no thanks extension promo."
+  },
+  
+  "menuNothanksText2": {
+    "message": "webbplatstillägg – det blockerar cookies och mycket mer för endast €9.85 om året!",
+    "description": "Menu no thanks extension promo."
+  },
+  
   "optionsTitle": {
     "message": "Inställningar",
     "description": "Title for the options page."

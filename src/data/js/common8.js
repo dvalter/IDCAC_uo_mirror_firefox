@@ -2,76 +2,49 @@ function _sl(s, c) {
 	return (c || document).querySelector(s);
 }
 
-function _id(s) {
-	return document.getElementById(s);
-}
+(function() {
+	var html = document.querySelector('html');
 
-
-var _i = setInterval(function() {
-	var html = _sl('html');
-	
-	if (!html || /idc8_343/.test(html.className))
+	if (/idc8_319/.test(html.className))
 		return;
 	
-	clearInterval(_i);
-	
-	html.className += ' idc8_343';
+	html.className += ' idc8_319';
 	
 	var c = 0, l = document.location, i = setInterval(function() {
 		
-		var e;
-		
-		if (l.hostname.split('.')[0] == 'consent') {
-			if (l.pathname == '/m') {
-				e = _sl('form[action*="//consent."][action$="/s"] button, form[action*="//consent."][action$="/save"] button');
+		if (l.hostname == 'consent.google.com') {
+			var containers = document.querySelectorAll('.cui-csn-data');
+			
+			if (containers.length > 0) {
+				var container = containers[containers.length - 1];
 				
-				if (e) {
-					e.click();
-					c = 299;
+				if (l.pathname == '/intro/') {
+					var e = _sl('a[href*="continue"]', container);
+					
+					if (e) {
+						e.click();
+					}
 				}
-			}
-			
-			
-			// Mobile only, ie google.co.uk (or in FF Nightly, on google.com search results)
-			
-			else if (l.pathname == '/ml') {
-				e = _sl('.saveButtonContainerNarrowScreen > form:last-child .button');
-				
-				if (e) {
-					e.click();
-					c = 299;
+				else if (l.pathname == '/ui/') {
+					var e = _sl('div[style*="none"] img[src*="keyboard_arrow_down_white"]', container);
+					
+					if (e) {
+						_sl('#agreeButton').click();
+						clearInterval(i);
+					} else {
+						_sl('img[src*="keyboard_arrow_down_white"]', container).parentNode.parentNode.click();
+					}
 				}
 			}
 		}
-		
-		
-		// https://www.google.com/finance/
-		
-		else if (l.hostname == 'ogs.google.com' && l.pathname == '/widget/callout') {
-			if (document.evaluate('//span[contains(text(), "This site uses cookies")]', document, null, XPathResult.ANY_TYPE, null).iterateNext()) {
-				_sl('button').click();
-				c = 299;
-			}
-		}
-		
 		else {
-			// The latest cookie popup, desktop and mobile
-			
-			var container = _sl('div[aria-modal="true"][style*="block"]');
-			
-			if (container && _sl('a[href*="policies.google.com/technologies/cookies"]', container)) {
-				_sl('button + button', container).click();
-				
-				// Autofocus on the search field
-				e = _sl('form[role="search"][action="/search"]:not([id]) input[aria-autocomplete="both"]');
-				if (e) e.focus();
-				
-				c = 299;
-			}
-			
 			// General privacy reminder
-			e = _sl('form[action^="/signin/privacyreminder"] > div > span > div:not([role]) > div:not([tabindex]) span + div');
-			if (e) e.click();
+			var e1 = _sl('form[action^="/signin/privacyreminder"] > div > span > div:not([role]) > div:not([tabindex]) span + div');
+			if (e1) e1.click();
+			
+			// google.fr/flights
+			var e2 = _sl('#gb[role="banner"] > div > div[style^="behavior"] > div > span + a[role="button"] + a[role="button"]');
+			if (e2) e2.click();
 			
 			// #cns=1
 			if (l.hash == '#cns=1')
@@ -83,5 +56,5 @@ var _i = setInterval(function() {
 		if (c == 300)
 			clearInterval(i);
 	
-	}, 250 + c*10);
-}, 250);
+	}, 500);
+})();
