@@ -5,10 +5,10 @@ function _sl(s, c) {
 (function() {
 	var html = document.querySelector('html');
 
-	if (/idc8_319/.test(html.className))
+	if (/idc8_320/.test(html.className))
 		return;
 	
-	html.className += ' idc8_319';
+	html.className += ' idc8_320';
 	
 	var c = 0, l = document.location, i = setInterval(function() {
 		

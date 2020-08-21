@@ -302,14 +302,14 @@ function blockUrlCallback(d)
 					
 					for (var i in rules)
 					{
-						if ((rules[i].q && d.url.indexOf(rules[i].r) > -1) || (!rules[i].q && clean_url.indexOf(rules[i].r) > -1))
+						if (d.url.indexOf(rules[i]) > -1)
 						{
 							if (debug_mode)
 							{
 								chrome.notifications.create('blocked', {
 									type: "basic",
 									title: "IDCAC debugging mode",
-									message: "Site specific block pattern found: " + rules[i].r,
+									message: "Site specific block pattern found: " + rules[i],
 									iconUrl: "icons/48.png"
 								});
 							}
@@ -483,12 +483,12 @@ chrome.runtime.onInstalled.addListener(function(d){
 		
 // 		chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/whats-new/2019/?b=f"});
 		
-		chrome.notifications.create('update', {
-			type: "basic",
-			title: "Big summer update - I don't care about cookies",
-			message: "Support the project, please. Visit i-dont-care-about-cookies.eu",
-			iconUrl: "icons/48.png"
-		});
+// 		chrome.notifications.create('update', {
+// 			type: "basic",
+// 			title: "Big summer update - I don't care about cookies",
+// 			message: "Support the project, please. Visit i-dont-care-about-cookies.eu",
+// 			iconUrl: "icons/48.png"
+// 		});
 	}
 	
 	if (d.reason == "install") {

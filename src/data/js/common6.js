@@ -51,9 +51,8 @@ function getE(h)
 		
 		case 'binumi.com':
 		case 'dunelm.com':
-		case 'tme.eu':
 		case 'ravi.pl':
-			return ['idcac=1']; // e
+			return ['idcac=1'];
 		
 		case 'fotoc.dk':
 		case 'fjshop.dk':
@@ -238,7 +237,7 @@ function getE(h)
 		case 'tarnkappe.info': return ['CM_cookieConsent=1'];
 		case 'celo.org': return ['__responded_to_consent__=true'];
 		case 'eduelo.pl': return ['cookies=1'];
-		case 'mediaverse.plex.tv': return ['plex_tv_cookie_consent=2'];
+		case 'plex.tv': return ['plex_tv_cookie_consent=2'];
 		case 'forumactif.org': return ['dntfa_banner=1'];
 		case 'vitra.com': return ['vitra_constent=performance'];
 		case 'usi.it': return ['priv=ok', 'approvecockie1=ok'];
@@ -250,7 +249,8 @@ function getE(h)
 		case 'regus.com': return ['cpa=accepted'];
 		case 'devias.io': return ['devias_consent=c1:1|c2:1', 'consent=true'];
 		case 'neuefische.de': return ['cookiesAccepted=true'];
-		case 'metro.de': return ['allowedCookieCategories=necessary%7Cfunctional%7Cperformance%7Cpromotional%7CUncategorized'];
+		case 'waldlandwelt.de': return ['c=j'];
+		case 'pluto.tv': return ['tos_acceptance_date=1596261209788'];
 	}
 	
 	

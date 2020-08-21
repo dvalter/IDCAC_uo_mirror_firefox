@@ -121,7 +121,6 @@
 		#dtcookie-container.is-on .dtcookie__accept,\
 		#js-cookiesettingsmodale[style*="block"] #js-cookiesettingsmanager_isok,\
 		.approve-btn[href*="setCookieAndRedirect"],\
-		.site .content input[name="csrf_token"] ~ div > .approve-btn,\
 		button[data-qa-entity="cookies.button"],\
 		#_evidon_banner[style*="flex"] #_evidon-accept-button,\
 		#_evidon_banner[style*="block"] #_evidon-accept-button,\
@@ -156,7 +155,7 @@
 		#CybotCookiebotDialogBodyLevelButtonAccept,\
 		.btn-accecpt-cookie,\
 		#js-gdpr-accept:not(.cta),\
-		.ReactModal__Content--after-open .cookie-notice .button:not(.button--secondary),\
+		.ck-modal--cookieModalMain .ck-Button__primary,\
 		.ReactModal__Overlay--after-open .UPM__PrivacyModal button[type="submit"],\
 		.privacyInformationDiv .cookie-agree,\
 		#__tealiumGDPRecModal #privacy_pref_optin,\
@@ -295,7 +294,7 @@
 		body.background .footer button#form_save.button[name="form[save]"],\
 		.cookie-modal .btn.accept-cookies-button[href^="/Cookie/HasConsent"],\
 		.view-cookie .js-cta-accept-cookie,\
-		.main-header div[data-component-type="cookiePanel"] div[class*="mxp-cta-btn-type-primary"],\
+		.main-header div[data-module="cookie-notice"] div[class*="CookiePanelContent"]:first-child > div,\
 		.c-cookie-consent form[name="cookie-consent"] input[type="submit"],\
 		.c-cookie-consent .c-cookie-consent__button',
 		
@@ -352,10 +351,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_319/.test(html.className))
+		if (!html || /idc0_320/.test(html.className))
 			return;
 		
-		html.className += ' idc0_319';
+		html.className += ' idc0_320';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);
