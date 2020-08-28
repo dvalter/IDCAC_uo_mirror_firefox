@@ -9511,7 +9511,7 @@ body > .cookies-mobile[style*="block"],
 .sticky_top[data-control="cookie_bar"],
 #footer ~ #section-cookies,
 #didomi-host #didomi-popup.didomi-notice-popup,
-#center_col #taw #epbar[style*="block"],
+#rcnt #center_col #taw,
 #cookie-popup2-sticky-wrapper,
 #alertpop-privacypolicy,
 .e-cookie .e-cookie-wrapper,
@@ -12119,7 +12119,14 @@ wp-cookie-notification-banner,
 #cookiewarner,
 .privacy_cookies_policy,
 #Div_CookieNag,
-#jsCookieNotification
+#jsCookieNotification,
+#cookie_info_container,
+.page-footer ~ div[class*="cookie-banner"],
+.BannerPrivacyInformation,
+#app div[class*="CookieWarning"],
+#pnlPrivacy,
+.component-cookie-banner,
+#__next div[class*="GdprBanner"]
 
 /* LAST: 12600 */
 {display:none !important; height:0 !important; z-index:-99999 !important; visibility:hidden !important; width:0 !important; overflow:hidden !important}

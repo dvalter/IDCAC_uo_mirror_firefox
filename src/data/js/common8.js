@@ -5,24 +5,31 @@ function _sl(s, c) {
 (function() {
 	var html = document.querySelector('html');
 
-	if (/idc8_320/.test(html.className))
+	if (/idc8_321/.test(html.className))
 		return;
-	
-	html.className += ' idc8_320';
+	html.className += ' idc8_321';
 	
 	var c = 0, l = document.location, i = setInterval(function() {
 		
-		if (l.hostname == 'consent.google.com') {
+		// the 2 step #introAgreeButton alternative may not be in use anymore
+		
+		if (l.hostname.split('.')[0] == 'consent') {
 			var containers = document.querySelectorAll('.cui-csn-data');
 			
 			if (containers.length > 0) {
 				var container = containers[containers.length - 1];
 				
 				if (l.pathname == '/intro/') {
-					var e = _sl('a[href*="continue"]', container);
+					var e = _sl('#introAgreeButton');
 					
 					if (e) {
 						e.click();
+					} else {
+						e = _sl('a[href*="continue"]:not([href*="account"])', container);
+					
+						if (e) {
+							e.click();
+						}
 					}
 				}
 				else if (l.pathname == '/ui/') {

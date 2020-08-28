@@ -701,7 +701,8 @@ function getE(h)
 		
 		case 'peek-cloppenburg.at':
 		case 'peek-cloppenburg.de':
-			return _sl('.cw-modal.show #accept-all-cookies');
+		case 'greenweez.com':
+			return _sl('.show #accept-all-cookies');
 		
 		case 'chartoo.de':
 		case 'chartoo.fr':
@@ -725,15 +726,8 @@ function getE(h)
 		case 'coolblue.be':
 			return _sl('.button[name="accept_cookie"]');
 		
-		case 'cmp.pzc.nl':
-		case 'cmp.dpgmedia.nl':
-			return _sl('.message-component[aria-label^="Ja"]');
-		
-		case 'cmp.dpgmedia.be':
-			return _sl('.message-component[title="Akkoord"]');
-		
 		case 'cdn.privacy-mgmt.com':
-			return _sl(' .message-component[title="OK"], .message-component[title="Accept  ›"], .message-component[title="Akkoord"]');
+			return _sl('.message-component[title="OK"], .message-component[title="Accept  ›"], .message-component[title="Akkoord"]');
 		
 		case 'miltenyibiotec.com':
 		case 'bioplanete.com':
@@ -764,6 +758,14 @@ function getE(h)
 			var e = _ev("span[contains(., 'Zamknij')]");
 			return (e ? e.parentNode.parentNode.parentNode : false);
 		
+		case 'bever.nl':
+		case 'asadventure.com':
+			return _sl('#body-wrapper div[data-hypernova-key="AEMScenes_CookieMessage"] .as-a-btn--fill');
+		
+		case 'dobrzemieszkaj.pl': return _sl('.AcceptAndCloseRODO');
+		case 'sachsen-fernsehen.de': return _sl('.cmms_cookie_consent_manager.-active .-confirm-all');
+		case 'indiearenabooth.com': return _sl('#cookie-consent:not([style*="none"]) #btn-cookie-consent-positive');
+		case 'joyn.de': return _sl('#__next > div > div > button[data-test-id="UC"]');
 		case 'schrotty-2.ticket.io': return _sl('.modal-cookie[style*="block"] .btn-primary');
 		case 'tme.eu': return _sl('.o-modal-wrapper--active[modal-context="rodo"] button');
 		case 'besteproduct.nl': return _sl('.modals.active .cookieWall-btn');
@@ -775,7 +777,6 @@ function getE(h)
 		case 'weltbild.de': return _sl('.reveal-overlay[style*="block"] .dsgvoButton');
 		case 'interfriendship.de': return _sl('#cookies-dlg:not([style*="none"]) .cdlg-accept-all');
 		case 'bmi.bund.de': return _sl('.mfp-ready #cookiebanner .js-close-banner');
-		case 'bever.nl': return _sl('#body-wrapper div[data-hypernova-key="AEMScenes_CookieMessage"] button');
 		case 'heinz.st': return _sl('#cookiebar[style*="block"] .accept');
 		case 'hetwkz.nl': return _sl('#cookieConsent .button[data-cookie*="yes"]');
 		case 'aptekagemini.pl': return _sl('.vue-privacy-policy__button:not(.button--hollow)');
