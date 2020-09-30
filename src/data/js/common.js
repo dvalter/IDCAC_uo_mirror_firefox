@@ -1,6 +1,7 @@
 (function() {
 	var searchGroups = [
-		'#CookieModal.in .btn[data-dismiss],\
+		'.qc-cmp2-container button[mode="primary"],\
+		#CookieModal.in .btn[data-dismiss],\
 		#didomi-host .didomi-button-highlight,\
 		#rgpd_video .rgpd-mask a[data-rgpd-consent],\
 		.js--modal[style*="block"] .cookie-permission--accept-button,\
@@ -22,7 +23,7 @@
 		#normativa_cookies.in .btn,\
 		#cookiewall.in .btn-primary,\
 		.outerCookieBar .EuCookieBar__cookieButton,\
-		#TOS-POPUP.rhododendron-popup .rhododendron-popup__button--agree,\
+		#TOS-POPUP .rhododendron-popup__button--agree,\
 		#cookie-wall #accept-cookies,\
 		#popup-wrapper .button[href*="/cookies.consent.php"],\
 		.reveal.cookies[style*="block"] button[click*="aceptaCookies"],\
@@ -351,10 +352,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_321/.test(html.className))
+		if (!html || /idc0_322/.test(html.className))
 			return;
 		
-		html.className += ' idc0_321';
+		html.className += ' idc0_322';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);

@@ -5,9 +5,9 @@ function _sl(s, c) {
 (function() {
 	var html = document.querySelector('html');
 
-	if (/idc8_321/.test(html.className))
+	if (/idc8_322/.test(html.className))
 		return;
-	html.className += ' idc8_321';
+	html.className += ' idc8_322';
 	
 	var c = 0, l = document.location, i = setInterval(function() {
 		
@@ -52,6 +52,10 @@ function _sl(s, c) {
 			// google.fr/flights
 			var e2 = _sl('#gb[role="banner"] > div > div[style^="behavior"] > div > span + a[role="button"] + a[role="button"]');
 			if (e2) e2.click();
+			
+			// Mobile devices
+			var e3 = _sl('#cnskc g-raised-button:last-child');
+			if (e3) e3.click();
 			
 			// #cns=1
 			if (l.hash == '#cns=1')

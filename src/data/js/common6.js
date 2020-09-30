@@ -89,6 +89,10 @@ function getE(h)
 		case 'prodyna.co.uk':
 			return ['prodyna-cookies=ALL'];
 		
+		case 'hotcleaner.com':
+		case 'mycinema.pro':
+			return ['CONSENT=200827NN'];
+		
 		case 'domhouse.pl': return ['rodo=1'];
 		case 'onmsft.com': return ['euconsent=1'];
 		case 'snapchat.com': return ['sc-cookies-popup-dismissed=true'];
@@ -251,6 +255,10 @@ function getE(h)
 		case 'neuefische.de': return ['cookiesAccepted=true'];
 		case 'waldlandwelt.de': return ['c=j'];
 		case 'pluto.tv': return ['tos_acceptance_date=1596261209788'];
+		case 'thecycleverse.com': return ['AMPLCONS_internal=true'];
+		case 'mymoria.de': return ['acceptCookies=%7B%22accept_mandatory%22%3Atrue%2C%22accept_optional%22%3Afalse%7D'];
+		case 'pagetiger.com': return ['cookie-preferences={%22acceptedAnalyticsCookie%22:true}'];
+		case 'tv-trwam.pl': return ['HAS_COOKIES_FORM_SHOWED=true', 'ARE_REQUIRED_COOKIES_ACCEPTED=true'];
 	}
 	
 	
