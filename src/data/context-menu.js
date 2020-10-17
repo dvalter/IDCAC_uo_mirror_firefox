@@ -384,16 +384,26 @@ function activateDomain(hostname, tabId, frameId)
 	if (!cached_rules[hostname])
 		return false;
 	
-	var r = cached_rules[hostname];
+	let r = cached_rules[hostname],
+		status = false;
 	
-	if (typeof r.s != 'undefined')
+	if (typeof r.s != 'undefined') {
 		chrome.tabs.insertCSS(tabId, {code: r.s, frameId: frameId, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_start'});
-	else if (typeof r.c != 'undefined')
+		status = true;
+	}
+	else if (typeof r.c != 'undefined') {
 		chrome.tabs.insertCSS(tabId, {code: commons[r.c], frameId: frameId, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_start'});
-	else if (typeof r.j != 'undefined')
+		status = true;
+	}
+	
+	if (typeof r.j != 'undefined') {
 		chrome.tabs.executeScript(tabId, {file: 'data/js/'+(r.j > 0 ? 'common'+r.j : hostname)+'.js', frameId: frameId, runAt: xml_tabs[tabId] ? 'document_idle' : 'document_end'});
-	else
+		status = true;
+	}
+	
+	if (!status)
 		return false;
+	
 	
 	setSuccessBadge(tabId);
 	

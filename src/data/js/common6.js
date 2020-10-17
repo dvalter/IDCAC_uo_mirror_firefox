@@ -93,6 +93,12 @@ function getE(h)
 		case 'mycinema.pro':
 			return ['CONSENT=200827NN'];
 		
+		case 'euroleague.net':
+		case 'eurocupbasketball.com':
+			return ['modalNotSeenEV=1', 'cookieBanner=true'];
+		
+		case 'finantia.com': return ['finantia_cookie=active'];
+		case 'finantia.es': return ['strictly_necessary=active'];
 		case 'domhouse.pl': return ['rodo=1'];
 		case 'onmsft.com': return ['euconsent=1'];
 		case 'snapchat.com': return ['sc-cookies-popup-dismissed=true'];
@@ -108,7 +114,6 @@ function getE(h)
 		case 'duolingo.com': return ['gdpr_cookie=true'];
 		case 'shop.sailboatowners.com': return ['consent=00'];
 		case 'picmonkey.com': return ['pm_cookie_consent=1', 'termsOfUse=0'];
-		case 'qz.com': return ['gdpr=true'];
 		case 'cjponyparts.com': return ['privacypopup=stop'];
 		case 'radio.juke.nl': return ['talpa-radio_cookie-consent=true'];
 		case 'aceandtate.com': return ['cookieconsent_status=allow'];
@@ -154,7 +159,7 @@ function getE(h)
 		case 'wallpaperup.com': return ['wup_jwt=1'];
 		case 'antyweb.pl': return ['aw-privacy-approval=true']; // zeropln
 		case 'archief.amsterdam': return ['verklaring=1'];
-		case 'enviam.de': return ['dws01-level=2'];
+		case 'enviam.de': return ['dws01-level=2', 'dws02-level=2'];
 		case 'quick.be': return ['cookie-policy-version=2', 'cookie-policy-accepted=1'];
 		case 'virustotal.com': return ['euConsent=1'];
 		case 'cmore.se': return ['cookieBannerDismissed=true'];
@@ -169,7 +174,6 @@ function getE(h)
 		case 'curiositystream.com': return ['gdpr_opt_out=0'];
 		case 'cindicator.com': return ['accepted_cookie=true'];
 		case 'kitchenplanner.ikea.com': return ['EnableGlobalLicenseAgreement=2015-04-01', 'HideCookieAgreementBanner=true'];
-		case 'visionexpress.pl': return ['cookiePolicy=1', 'gdpr=1']; // sklep
 		case 'atro-provita.de': return ['cookieconsent=true'];
 		case 'tv.nu': return ['gdprNotice=1'];
 		case 'unicheck.com': return ['unicheck-accepted-cookies=true'];
@@ -201,7 +205,6 @@ function getE(h)
 		case 'lonewolfonline.net': return ['visited=yes'];
 		case 'bookchoice.com': return ['cookie-policy-accepted=true'];
 		case 'smule.com': return ['smule_cookie_banner_disabled=true'];
-		case 'euroleague.net': return ['modalNotSeen=1']; // e
 		case 'codementor.io': return ['cm-general_cookie-consent=true'];
 		case 'e-syntagografisi.gr': return ['cookieconsent_status=1']; // /p-rv/p
 		case 'krone.at': return ['krn_consent_shown=1'];
@@ -259,6 +262,10 @@ function getE(h)
 		case 'mymoria.de': return ['acceptCookies=%7B%22accept_mandatory%22%3Atrue%2C%22accept_optional%22%3Afalse%7D'];
 		case 'pagetiger.com': return ['cookie-preferences={%22acceptedAnalyticsCookie%22:true}'];
 		case 'tv-trwam.pl': return ['HAS_COOKIES_FORM_SHOWED=true', 'ARE_REQUIRED_COOKIES_ACCEPTED=true'];
+		case 'phish-test.de': return ['gtag=true'];
+		case 'sea-seek.com': return ['OK_Cook=OK'];
+		case 'dajar.cz': return ['cookieNoticeAccept=true'];
+		case 'jobalert.ie': return ['hasAcceptedCookies=true'];
 	}
 	
 	

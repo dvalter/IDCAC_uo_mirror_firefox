@@ -29,6 +29,22 @@ function getE(h)
 		case 'sp-prod.net': return _sl('.cmp-cta-accept, .message-button:not(.cmp-cta-accept) + .message-button');
 		case 'privacymanager.io': return _sl('.noDenyButton .accept-all');
 		
+		case 'cdn.privacy-mgmt.com':
+		case 'cmp.focus.de':
+		case 'cmp.chip.de':
+		case 'cmp2.bild.de':
+		case 'sourcepoint.n-tv.de':
+		case 'consent.faz.net':
+		case 'tcf2.telegraph.co.uk':
+		case 'privacy.selbst.de':
+		case 'privacy.tvmovie.de':
+		case 'privacy.cosmopolitan.de':
+		case 'privacy.lecker.de':
+		case 'privacy.praxisvita.de':
+		case 'wunderweib.de':
+		case 'privacy.autozeitung.de':
+			return _sl('.message-component[title*="OK"], .message-component[title*="Accept"], .message-component[title*="Akkoord"], .message-component[title*="akzeptieren"], .message-component[title*="Akzeptieren"], .message-component[title*="Zustimmen"], .message-component[title*="ZUSTIMMEN"]');
+		
 		case 'o2.pl':
 		case 'money.pl':
 		case 'open.fm':
@@ -43,6 +59,7 @@ function getE(h)
 		case 'parenting.pl':
 		case 'so-magazyn.pl':
 		case 'domodi.pl':
+		case 'vibez.pl':
 			return _ev("button[contains(., 'PRZECHODZ')]");
 		
 		case 'video.gazzanet.gazzetta.it':
@@ -54,6 +71,10 @@ function getE(h)
 		case 'octapharma.com':
 			var e = _sl('#assistant-paper button');
 			return (e && _ev("span[contains(., 'I agree')]", e) ? e : false);
+		
+		case 'instagram.com':
+			var e = _sl('#react-root ~ [role] a[href*="cookies"]');
+			return (e ? _sl('#react-root ~ [role] button:first-child') : false);
 		
 		case 'rp.pl':
 		case 'parkiet.com':
@@ -116,7 +137,7 @@ function getE(h)
 			return _sl('.has-cookie-notification .cookie-notification__accept');
 			
 		case 'spar.si':
-			return _sl('.has-cookie-notification .cookie-notification__accept, .cookie-notification__select-all');
+			return _sl('.has-cookie-notification .cookie-notification__accept, .has-cookie-notification .cookie-notification__select-all');
 		
 		case 'rain-alarm.com':
 			var e = _id('privacypolicyAnalyticsYes');
@@ -124,6 +145,7 @@ function getE(h)
 			return _id('dialogButtonNo');
 		
 		case 'medium.com':
+		case 'blog.securityevaluators.com':
 		case 'blog.cyclofix.com':
 		case 'uxplanet.org':
 		case 'blog.trezor.io':
@@ -324,6 +346,7 @@ function getE(h)
 		case 'reebok.fr':
 		case 'reebok.be':
 		case 'reebok.pl':
+		case 'reebok.se':
 		case 'adidas.co.uk':
 		case 'adidas.de':
 		case 'adidas.it':
@@ -338,6 +361,7 @@ function getE(h)
 		case 'adidas.dk':
 		case 'adidas.no':
 		case 'adidas.ie':
+		case 'adidas.ru':
 		case 'adidas.com':
 			return _sl('.gl-modal--active > button[class*="cookie-consent"] ~ div .gl-cta--primary');
 		
@@ -390,6 +414,9 @@ function getE(h)
 		case 'saveur.com':
 			return _id('CybotCookiebotDialogBodyButtonAccept');
 		
+		case 'flos.com':
+			return _sl('.CybotCookiebotDialogBodyButton[id*="AllowallSelection"]');
+
 		case 'yellowbrick.nl':
 		case 'yellowbrick.de':
 		case 'yellowbrick.be':
@@ -443,6 +470,8 @@ function getE(h)
 		case 'vikingeskibsmuseet.dk':
 		case 'volleyball.bayern':
 		case 'alpenverein-schwaben.de':
+		case 'deutsches-sportabzeichen.de':
+		case 'dermasence.de':
 			return _sl('#cookieman-modal[style*="block"] [data-cookieman-save]');
 		
 		case 'jku.at': return _sl('#cookieman-modal > div[style*="block"] [data-cookieman-accept-all]');
@@ -534,6 +563,7 @@ function getE(h)
 		
 		case 'betriebsrat.de':
 		case 'snp-online.de':
+		case 'verla.de':
 			return _sl('.cookielayermodal[style*="block"] .btn-primary');
 		
 		case 'alphr.com': return _sl('div[id^="sp_message"] div[class*="sp_choices"] button:nth-child(2)');
@@ -551,6 +581,12 @@ function getE(h)
 		case 'autoweek.nl':
 		case 'landsend.de':
 		case 'gmx.com':
+		case 'gmx.es':
+		case 'mail.com':
+		case 'cbsnews.com':
+		case 'cnet.com':
+		case 'assetstore.unity.com':
+		case 'kruidvat.nl':
 			return _sl('#onetrust-banner-sdk:not([style*="none"]) #onetrust-accept-btn-handler');
 		
 		case 'qastack.fr':
@@ -676,6 +712,8 @@ function getE(h)
 		
 		case 'mnisek.cz':
 		case 'covid19awareness.sa':
+		case 'ambiance.be':
+		case 'figurelist.co':
 			return _sl('.elementor-popup-modal:not([style*="none"]) .elementor-button[href*="close"]');
 		
 		case 'kyoceradocumentsolutions.eu':
@@ -700,20 +738,23 @@ function getE(h)
 		
 		case 'toolstation.nl':
 		case 'toolstation.fr':
-			return _sl('#eu-cookies-notice[style*="block"] #eu-cookies-notice-yes');
+			return _sl('.modal[style*="block"] #eu-cookies-notice-yes');
 		
 		case 'karriere.at':
 		case 'jobs.at':
 			return _sl('.k-blockingCookieModal__button');
 		
 		case 'materna.de':
+		case 'thw.de':
 		case 'bamf.de':
 			return _sl('.mfp-ready #cookiebanner .consentToAll');
 		
 		case 'peek-cloppenburg.at':
 		case 'peek-cloppenburg.de':
+		case 'peek-cloppenburg.nl':
 		case 'greenweez.com':
 		case 'fashionid.de':
+		case 'ansons.de':
 			return _sl('.show #accept-all-cookies');
 		
 		case 'chartoo.de':
@@ -737,22 +778,15 @@ function getE(h)
 		case 'coolblue.be':
 			return _sl('.button[name="accept_cookie"]');
 		
-		case 'cdn.privacy-mgmt.com':
-		case 'cmp.focus.de':
-		case 'cmp.chip.de':
-		case 'cmp2.bild.de':
-		case 'sourcepoint.n-tv.de':
-		case 'consent.faz.net':
-		case 'tcf2.telegraph.co.uk':
-			return _sl('.message-component[title*="OK"], .message-component[title*="Accept"], .message-component[title*="Akkoord"], .message-component[title*="akzeptieren"], .message-component[title*="Akzeptieren"], .message-component[title*="Zustimmen"], .message-component[title*="ZUSTIMMEN"]');
-		
 		case 'miltenyibiotec.com':
 		case 'bioplanete.com':
 			return _sl('#modal-cookie[style*="block"] #saveCookies');
 		
 		case 'landratsamt-dachau.de':
 		case 'landkreis-regensburg.de':
+		case 'passau.de':
 		case 'sinzing.de':
+		case 'barbing.de':
 			return _sl('.mfp-ready .cookieselection-confirm-selection');
 		
 		case 'delhaize.be':
@@ -774,6 +808,7 @@ function getE(h)
 		case 'hotel-mohren.de':
 		case 'ok-bergbahnen.com':
 		case 'tramino.de':
+		case 'markt-oberstdorf.de':
 			return _sl('.TraminoConsent.show button[value="acceptConsentAll"]');
 		
 		case 'system.t-mobilebankowe.pl':
@@ -783,6 +818,8 @@ function getE(h)
 		case 'bever.nl':
 		case 'asadventure.com':
 		case 'cotswoldoutdoor.com':
+		case 'runnersneed.com':
+		case 'snowandrock.com':
 			return _sl('#body-wrapper div[data-hypernova-key="AEMScenes_CookieMessage"] .as-a-btn--fill');
 		
 		case 'sachsen-fernsehen.de':
@@ -790,6 +827,8 @@ function getE(h)
 		case 'radioeins.com':
 		case 'regio-tv.de':
 		case 'radio-bamberg.de':
+		case 'tvo.de':
+		case 'frankenfernsehen.tv':
 			return _sl('.cmms_cookie_consent_manager.-active .-confirm-selection');
 		
 		case 'gongfm.de':
@@ -806,10 +845,6 @@ function getE(h)
 		case 'gmx.at':
 		case 'web.de':
 			return _sl('#cmp #save-all-conditionally');
-		
-		case 'thesocialmedwork.com':
-		case 'vandalism-sounds.com':
-			return _sl('#notice-cookie-block[style*="block"] .allow');
 		
 		case 'music.yandex.ru':
 		case 'music.yandex.com':
@@ -838,17 +873,21 @@ function getE(h)
 		
 		case 'stoffe.de':
 		case 'myfabrics.co.uk':
+		case 'tyg.se':
 			return _sl('body[style*="fixed"] #cookieOverlay .cookie-accept');
 		
 		case 'samsonite.ch':
 		case 'samsonite.de':
 		case 'samsonite.fr':
+		case 'samsonite.nl':
 		case 'samsonite.co.uk':
 			return _sl('.overlay-wrapper--visible .cookie-consent-overlay__actions .btn--primary');
 		
 		case '12xl.de':
 		case 'heilsteinwelt.de':
-			return _sl('#cookieNote[style*="block"] .btn-primary');
+		case 'elektroversand-schmidt.de':
+		case 'optikplus.de':
+			return _sl('.modal[style*="block"] #saveCookieSelection');
 		
 		case 'tvmalbork.pl':
 		case 'jelenia.tv':
@@ -856,6 +895,9 @@ function getE(h)
 		
 		case 'catawiki.nl':
 		case 'catawiki.de':
+		case 'catawiki.eu':
+		case 'catawiki.fr':
+		case 'catawiki.es':
 		case 'catawiki.com':
 			return _id('cookie_bar_agree_button');
 		
@@ -885,6 +927,178 @@ function getE(h)
 		case 'voltadol.at':
 			return _sl('.cookie-banner--visible .cookie-banner__button--accept');
 		
+		case 'penny.at':
+		case 'merkurmarkt.at':
+			return _sl('.v-dialog--active #btnOK');
+		
+		case 'gv.at':
+		case 'ris.at':
+		case 'wipptal.org':
+		case 'herrnbaumgarten.at':
+		case 'steinbach-attersee.at':
+		case 'gemeindebrenner.eu':
+		case 'gmuend.at':
+		case 'kuchl.net':
+		case 'gramatneusiedl.at':
+		case 'moedling.at':
+		case 'salzburg.at':
+		case 'zellamsee.eu':
+		case 'waidhofen-thaya.at':
+			return _sl('.bemCookieOverlay__btn--save');
+		
+		case 'restaurant-kitty-leo.de':
+		case 'dieallianzdesguten.com':
+			return _sl('main ~ div a[draggable]');
+		
+		case 'pricerunner.dk':
+		case 'pricerunner.se':
+		case 'pricerunner.com':
+			return _sl('#root > span button:first-child');
+		
+		case 'dpam.com':
+		case 'sergent-major.com':
+			return _sl('#consent-tracking[style*="block"] .close');
+		
+		case 'silentmaxx.de':
+		case 'allfirewalls.de':
+			return _sl('#trocookie-cookiebox[style*="block"] button:last-child');
+		
+		case 'auchan.hu':
+		case 'auchan.pl':
+			return _sl('.cookie-modal__button--accept');
+		
+		case 'inp-gruppe.de':
+		case 'manageengine.de':
+			return _sl('#colorbox[style*="block"] .js_cm_consent_submit');
+		
+		case 'alpin-chalets.com':
+		case 'frischteigwaren-huber.de':
+			return _sl('.overlay.active[data-overlay="privacy"] .overlay_close');
+		
+		case 'mrc-trading.de':
+		case 'tabakpfeife24.de':
+			return _sl('.modal[style*="block"] .btn[onclick*="setConsentSelect"]');
+		
+		case 'campusjaeger.de':
+			var e = _sl('.ReactModal__Overlay--after-open');
+			return (e && _ev("h4[contains(., 'Cookies')]") ? _sl('button', e) : false);
+		
+		case 'monheim.de':
+		case 'maengelmelder.de':
+		case 'xn--mngelmelder-l8a.de':
+			return _sl('.v--modal-overlay[data-modal="cookie-consent"] .btn-primary');
+		
+		case 'roompot.de':
+		case 'roompot.nl':
+		case 'roompot.fr':
+		case 'roompot.be':
+		case 'roompot.com':
+			return _sl('.cookiebar:not([style*="none"]) .js-cookies-accept');
+		
+		case 'kofferraumwannen.de':
+		case 'expert-security.de':
+			return _sl('#PrivacyCategoryAlert[style*="block"] .btn-primary');
+		
+		case 'womex.com':
+		case 'piranha.de':
+			return _sl('.modal[style*="block"] #accept-cookies-all');
+		
+		case 'photovoltaik-shop.com':
+		case 'datenlogger-store.de':
+			return _sl('.amgdprcookie-modal-container._show .-save');
+		
+		case 'sofatutor.ch':
+		case 'sofatutor.at':
+		case 'sofatutor.com':
+			return _sl('.reveal-overlay[style*="block"] .all-cookies');
+		
+		case 'lumeo.chip.de':
+		case 'puiklokaal.nl':
+			return _sl('#cookie-wall .buttons-wrapper > div:last-child .im-button');
+		
+		case 'brauerei-spezial.de':
+		case 'workout-bs.de':
+			return _sl('.mfp-ready .avia-cookie-close-bar');
+		
+		case 'fiftysix.nl':
+			var e = _id('cookie_advertising--false');
+			if (e) e.click();
+			return _sl('.cookiePopup .bttn');
+		
+		case 'live.com':
+			var e = _sl('.ms-Layer--fixed a[href*="privacy.microsoft"]');
+			return (e ? _sl('.ms-Layer--fixed .ms-Button--primary') : false);
+		
+		case 'openjobmetis.it':
+			var e = _id('cookie_msg');
+			if (e) e.className += " idcac";
+			return e;
+		
+		case 'proman-emploi.fr': return _sl('#root button[class*="cookieNotice-accept"]');
+		case 'alcar.at': return _sl('.modal[style*="block"] .cookie-overlay-btn[aria-label*="accept"]');
+		case 'bang-olufsen.com': return _sl('#ppms-modal[style*="block"] #reject-all');
+		case 'foxtons.co.uk': return _sl('.fancybox-overlay[style*="block"] .cookie_option[data-choice*="Yes"]');
+		case 'ilmarinen.fi': return _sl('.modal[style*="block"] #ilmGdprCooModOk');
+		case 'qwic.de': return _sl('#cookie-consent[style*="block"] .js-cookie-accept');
+		case 'taschenhirn.de': return _sl('.cookie-notice .cm-btn-success');
+		case 'asfinag.at': return _sl('#modalCookieInfo[style*="block"] .btn-primary');
+		case 'qinetiq.com': return _sl('#cookiePolicyBanner .button');
+		case 'otpbanka.hr': return _sl('#perpetuum-cookie-bar.visible .perpetuum-button-allow a');
+		case 'uniroyal.de': return _sl('.is-cookiebanner-visible .js-cookie-accept');
+		case 'aarsfjv.dk': return _sl('dff-cookie-consent-dialog button[data-cookiescanner*="accept"]');
+		case 'foodengineeringmag.com': return _sl('form[action*="gdpr-policy"] .button[value="Accept"]');
+		case 'langeland.nl': return _sl('#cookieWallOverlay[style*="block"] .ok-cookies');
+		case 'benify.se': return _sl('.modal[style*="block"] .btn[onclick*="acceptDefaultCookies"]');
+		case 'magentagaming.com': return _sl('button[data-test="cookie-accept"]');
+		case 'vu.nl': return _sl('#cookie-consent:not([hidden]) button[data-all]');
+		case 'bestdrive.fr': return _sl('.m-cookie:not(.m-cookie--hidden) .m-cookie__button-accept');
+		case 'elekta.com': return _sl('#cookie-banner[style*="block"] #cookie-accept');
+		case 'c24.de': return _sl('app-cookie app-c24-button');
+		case 'modellbau-metz.com': return _id('cookie_all_accept');
+		case 'keimling.de': return _sl('.modal[style*="block"] #cookieConsentAcceptButton');
+		case 'apothekia.de': return _sl('.ant-modal-root button');
+		case 'vitalsource.com': return _sl('div[id^="dialog"] [data-testid*="CookiesDialog"] + div + div button');
+		case 'wohnen-im-alter.de': return _sl('.modal[style*="block"] .btn[onclick*="CookieConsent.apply"]');
+		case 'wohnmobilforum.de': return _sl('#consentbox input.knopf');
+		case 'diebayerische.de': return _sl('#cookie-consent-layer[style*="block"] .js_cc-accept-all');
+		case 'uvex-group.com': return _sl('uvex-cookie-banner .btn + .btn');
+		case 'blocket.se': return _sl('aside[aria-label*="cookie"] #close-modal');
+		case 'healthinsight.ca': return _sl('.modal[style*="block"] .vicky-cookie-yes');
+		case 'studiobookr.com': return _sl('#cookie-hint-display:not([style*="none"]) .sb-primary');
+		case 'boehringer.net': return _sl('.cookie-consent .submit-selected');
+		case 'buchhandlung-7morgen.de': return _sl('.modal[style*="block"] .consent-banner-confirmation-button');
+		case 'wegedetektiv.de': return _sl('.modal[style*="block"] #cookieok');
+		case 'sport1.de': return _sl('.s1-fallback-socialWidget .s1-single-accept');
+		case 'engelvoelkers.com': return _sl('.ev-disable-scrolling .cookie-consent-dialog-container button[onclick*="accept"]');
+		case 'ep.de': return _sl('.cookielayer-open .cookies-overlay-dialog__save-btn');
+		case 'vinos.de': return _sl('.consent-cookie-box__button-save-selection');
+		case 'devowl.io': return _sl('body > div[style*="block"] div[id*="bnnr-body-rightSide"] > div:nth-child(3)');
+		case 'reviewmeta.com': return _sl('.modal[style*="block"] #terms_accepted');
+		case 'justjoin.it': return _sl('#root > div > a[href*="privacy"] ~ button');
+		case 'ferienchecker.at': return _sl('.el-dialog__wrapper:not([style*="none"]) .cookie__button');
+		case 'leoprinting.fr': return _sl('#cookieConsentModal[style*="block"] #saveButton');
+		case 'truepartnercapital.com': return _sl('.mfp-ready #close-cookie-disclaimer-btn');
+		case 'envoituresimone.com': return _sl('.modal[style*="block"] #accept_cookies');
+		case 'abo24.de': return _sl('.featherlight[style*="block"] #consent-all');
+		case 'edeka-foodservice.de': return _sl('.dialog button[onclick*="accept"]');
+		case 'computerbase.de': return _sl('.consent[open] .consent__button');
+		case 'nacex.es': return _sl('.ui-dialog[style*="block"] #accept');
+		case 'targoversicherung.de': return _sl('.modal[style*="block"] .dsgvo.accept');
+		case 'unedtenerife.es': return _sl('#uploadedImagePopup[style*="block"] .close');
+		case 'quiziniere.com': return _sl('.modal[style*="block"] .qz-alert-cookie button');
+		case 'amway.it': return _sl('.amw-dialog-wrapper--visible button[class*="cookies-popup---saveAndClose"]');
+		case 'itis.swiss': return _sl('#cookie_blocker:not([style*="none"]) #cookie_ok');
+		case 'prosa.dk': return _sl('.t3cms-cookies-overlay:not([style*="none"]) .t3cms-cookies-select-all');
+		case 'googlewatchblog.de': return _sl('.embed-youtube .cmplz-blocked-content-notice');
+		case 'adventurespiele.net': return _sl('.data-protection-info[style*="block"] .ok');
+		case 'fastforwardscience.de': return _sl('#coookieOverlay.open #coookieOverlayButtonSave');
+		case 'readly.com': return _sl('.cookie-consent #cookie-accept-all');
+		case 'tumblr.com': return _sl('.l-container [data-view="guce-gdpr"] .btn.yes');
+		case 'hondoscenter.com': return _sl('#cookies-modal-id[style*="block"] .js-accept');
+		case 'volleybal.nl': return _sl('.show-cookie-overlay .js-save-all-cookies');
+		case 'mantel.com': return _sl('#modal-ck[style*="block"] .btn-primary');
+		case 'akelius.com': return _sl('web-cookie-manager-dialog .mat-primary');
+		case 'famobi.com': return _sl('.consent-box-holder:not([style*="none"]) .consent-box-button');
 		case 'biblioteka.wroc.pl': return _sl('#cookie-notice[style*="block"] .js-accept-cookies');
 		case 'svenskakyrkan.se': return _sl('.cookies__bar.is-active .js-cookies-accept-all');
 		case 'k15t.com': return _sl('.reveal[style*="block"] .cookiesAccepted');
@@ -906,17 +1120,15 @@ function getE(h)
 		case 'ls-tc.de': return _sl('.modal[style*="block"] .accept');
 		case 'spielexikon.de': return _sl('input[name="edit-property-cookie-accept"]');
 		case 'etepetete-bio.de': return _sl('.modal[style*="block"] .accept-all-button');
-		case 'kofferraumwannen.de': return _sl('#PrivacyCategoryAlert[style*="block"] .btn-primary');
 		case 'neliosoftware.com': return _sl('.nelio-cookie-modal:not([style*="none"]) button');
 		case 'uvex-safety.com': return _sl('.modal-cookie .btn + .btn');
-		case 'roompot.de': return _sl('.cookiebar:not([style*="none"]) .js-cookies-accept');
 		case 'cocktaildatenbank.de': return _sl('.show #d-cc--confirm');
 		case 'dkms.pl': return _sl('.cc-window-active .cc-dismiss');
+		case 'jobware.de': return _sl('.cc-blackout:not(.cc-invisible) .cc-dismiss');
 		case 'bo.de': return _sl('#footer-consent[style*="block"] #reiff-consent-accept');
 		case 'rittal.com': return _sl('.swal-overlay--show-modal .--primary');
 		case 'idoc.eu': return _sl('.is--active .cookie-permission--accept-button');
 		case 'ufz.de': return _sl('#cookie-banner[style*="block"] .btn-success');
-		case 'sofatutor.com': return _sl('.reveal-overlay[style*="block"] .all-cookies');
 		case 'quooker.de': return _sl('#cookie_wrapper:not([style*="none"]) .cookie_close');
 		case 'shoot-club.de': return _sl('.modal[style*="block"] .set_all_cookies');
 		case 'imoradar24.ro': return _sl('#modal-cookies[style*="block"] .accept');
@@ -933,9 +1145,8 @@ function getE(h)
 		case 'lbbw.de': return _sl('.component-data-protection-consent.show .action-save-settings');
 		case 'deka.de': return _sl('.mfp-ready .js-accept-selected-cookies');
 		case 'litebit.eu': return _sl('.cookie-consent button');
-		case 'dpam.com': return _sl('#consent-tracking[style*="block"] .close');
 		case 'my.nintendo.com': return _sl('.CookiePolicyModal .Modal:not([style*="none"]) .btn-primary');
-		case 'aboalarm.de': return _sl('.modal.show #cmp-accept-all-initial');
+		case 'aboalarm.de': return _id('cmp-accept-all-initial');
 		case 'shpock.com': return _sl('#__next ~ div[id*="modal"] div[class*="PrivacyConsent"] button');
 		case 'dobrzemieszkaj.pl': return _sl('.AcceptAndCloseRODO');
 		case 'indiearenabooth.com': return _sl('#cookie-consent:not([style*="none"]) #btn-cookie-consent-positive');
@@ -955,27 +1166,24 @@ function getE(h)
 		case 'aptekagemini.pl': return _sl('.vue-privacy-policy__button:not(.button--hollow)');
 		case 'alternate.de': return _sl('.cookie-acceptance-media-consent-accept');
 		case 'betway.se': return _sl('.fixed-body .bwCookiePolicy .bwButton');
-		case 'mrc-trading.de': return _sl('#etrpop.modal[style*="block"] .btn-success');
 		case 'xiaomiromania.com': return _sl('.fancybox-opened .cp-accept');
 		case 'dark.netflix.io': return _sl('.abs-fill[class*="cookie-policy"] button');
 		case 'mycare.de': return _sl('#cookie-settings-content[style*="block"] #btn-cookie-accept');
 		case 'erdbeerprofi.de': return _sl('#gdpr-cookie-container #btn-cookie-allow');
 		case 'pharmazeutische-zeitung.de': return _sl('#ccm .ccm_button_green');
 		case 'dotomi.com': return _sl('.btn-continue[onclick^="cjil"]');
-		case 'penny.at': return _sl('.v-dialog--active #btnOK');
 		case 'komplettbank.se': return _sl('.kb-cc[style*="block"] .kb-cc-btn_main');
 		case 'novado.de': return _sl('#cookie-block[style*="block"] #btn-allow');
 		case 'provostvet.co.uk': return _sl('.consent-wrapper.show #js-cw-accept');
 		case 'onwebchange.com': return _sl('.cookie_banner .btn-primary');
-		case 'brauerei-spezial.de': return _sl('.mfp-ready .avia-cookie-close-bar');
 		case 'vodafone.nl': return _sl('.googlemaps-iframe-wrapper .cookie-yes, .cookiewall__wrapper:not([style*="none"]) .cookiewall__accept');
-		case 'strato.de': return _sl('body > .consent:not(.hidden) #consentAgree, #cookie_overlay:not(.hidden) #consentAgree');
+		case 'strato.de': return _sl('body > .consent:not(.hidden) #consentAgree, #cookie_overlay:not(.hidden) .consent:not(.hidden) #consentAgree');
 		case 'texels.nl': return _sl('.show-cookie-notice .cookie-closer');
 		case 'coperion.com': return _sl('.is-visible .button[data-cookie-close="accept"]');
-		case 'lotto.pl': return _sl('.privacy-popup.active .orange-btn');
+		case 'lotto.pl': return _sl('.privacy-popup.active .orange-btn, #baseModal[style*="block"] #modalButtonAccept');
 		case 'mehilainen.fi': return _sl('.MuiDialog-root[class*="Consent"] button + button');
 		case 'llamaya.com': return _sl('.MuiDialog-root.cookies-modal .set-all');
-		case 'tre.se': return _sl('.MuiDialog-root .MuiButton-containedPrimary');
+		case 'tre.se': return _sl('.MuiDialog-root .MuiButton-containedPrimary, #react-aria-modal-dialog[aria-label*="Cookie"] button:first-child');
 		case 'openx.com': return _sl('.ox-localization.active .ox-confirm');
 		case 'evileg.com': return _sl('#privacy_policy_dialog[style*="block"] .btn[data-dismiss]');
 		case 'testzentrale.de': return _sl('.cookie-settings[style*="block"] .secondary');
@@ -995,8 +1203,6 @@ function getE(h)
 		case 'impulse.de': return _sl('.imp-cc-accept');
 		case 'dailyfx.com': return _sl('.dfx-cookiesNotification--visible .jsdfx-cookiesNotification__close');
 		case 'hufeisenkrater.de': return _sl('#cookieNotice[style*="block"] .btn-success');
-		case 'vomp.tirol.gv.at': return _sl('.bemCookieOverlay__btn--acceptAll');
-		case 'inp-gruppe.de': return _sl('#colorbox[style*="block"] .js_cm_consent_submit');
 		case 'cinkciarz.pl': return _sl('#cookies-modal[style*="block"] .btn-primary');
 		case 'joingoodcompany.nl': return _sl('#cookie-accept:not(.hide) .cookie-btn');
 		case 'fanfiktion.de': return _sl('#colorbox[style*="block"] #ff-consent-close');
@@ -1054,12 +1260,10 @@ function getE(h)
 		case 'altomdinhelse.no': return _sl('.modal[style*="block"] .vicky-cookie-yes');
 		case 'westfalen.igbce.de': return _sl('#first_confirmation_button.eupopup-button');
 		case 'quorn.co.uk': return _sl('.cmp-btn[onclick*="save"]');
-		case 'kjell.com': return _sl('#container > div > div:last-of-type > div > button');
 		case 'axa-im.fr': return _sl('.gh-accept-cookie-disclaimer');
 		case 'gruener-punkt.de': return _sl('#cookie-modal[style*="block"] input[data-cookie="all"]');
 		case 'coolmath.com': return _sl('.gdpr-overlay-container[style*="visible"] .accept-all-cookies');
 		case 'hosteurope.de': return _sl('.ReactModal__Overlay--after-open .UPM__PrivacyModal span + span button');
-		case 'lumeo.chip.de': return _sl('#cookie-wall .buttons-wrapper > div + div .im-button');
 		case 'zeit.de': return _sl('#main[data-ct-area="decision-main"] .box__accbtn button');
 		case 'm.bancopopular.com': return _sl('#popup-cookieinfo:not(.hide) #btn-dmp-continue');
 		case 'stat.si': return _sl('.surs-cookies-wrapper[style*="block"] .surs-cookie-button-yes');
@@ -1083,9 +1287,8 @@ function getE(h)
 		case 'fabrykacukiernika.pl': return _sl('.rodo-popup[style*="block"] button');
 		case 'ostrzegamy.online': return _sl('.rodo-popup[style*="block"] button[data-cookie-name]');
 		case 'bauder.de': return _sl('#cookieWarningText .privacy ~ a');
-		case 'beamtic.com': return _sl('#data_consent.consent_popup button');
+		case 'beamtic.com': return _sl('#_data_consent button');
 		case 'dclaw.co.uk': return _sl('#dialog-cookies .btn-primary');
-		case 'instagram.com': return _sl('button.coreSpriteDismissLarge');
 		case 'cookiewall.vice.com': return _id('i-agree');
 		case 'emerce.nl': return _sl('.cc-container a#btn');
 		case 'fr12.nl': return _id('cookies');
@@ -1198,7 +1401,7 @@ function getE(h)
 		case 'allyouneedfresh.de': return _sl('#frmNoCookiesModal > a');
 		case 'shmoop.com': return _sl('.btn.eu-opt-in, .privacy-notice .privacy-agree');
 		case 'theforestmap.com': return _sl('.modal.fade.in #acceptcookies');
-		case 'commentreparer.com': return _sl('#rgpd .btn.btn-danger');
+		case 'commentreparer.com': return _sl('.modal[style*="block"] #rgpd .btn.btn-danger');
 		case 'societe.com': return _sl('#cookiesmodale .Button[name="cookiesall-oui"]');
 		case 'zeelandnet.nl': return _sl('.modal__button--accept[href*="cookie"]');
 		case 'gnkdinamo.hr': return _sl('#privacyPolicyModal.in .btn-confirm');
@@ -1238,7 +1441,7 @@ function getE(h)
 		case 'online.no': return _sl('.close-disclaimer .autofocus-el');
 		case 'openpli.org': return _sl('div[onclick^="euCreateCookie"]');
 		case 'privacy.vakmedianet.nl': return _sl('.general-cta-btn');
-		case 'evaair.com': return _sl('#cookie-banner.in .btn-cookie-banner, #colorbox[style*="block"] #cookies .positive'); // flights...
+		case 'evaair.com': return _sl('.modal-box .cookie-close');
 		case 'bluelagoon.com': return _sl('#app > div > p ~ button');
 		case 'zekur.nl': return _sl('.cookie-consent .btn.agreed');
 		case 'elevensports.it': return _sl('#elevensports-privacy .close');
@@ -1349,7 +1552,6 @@ function getE(h)
 		case 'voidu.com': return _id('eu-cookie-ok');
 		case 'lavalleedestortues.fr': return _sl('.reveal-overlay[style*="block"] #modalCookies .button[href*="accept"]');
 		case 'smartshop.hu': return _sl('.c-gdpr button');
-		case 'alpin-chalets.com': return _sl('.overlay.active[data-overlay="privacy"] .overlay_close');
 		case 'fimfiction.net': return _sl('.cookie-consent-popup button[type="submit"]');
 		case 'keepersecurity.com': return _sl('.cookie-consent-popup[style*="block"] .cookie_accept');
 		case 'bakken.nl': return _sl('.cookie-info__button button');
@@ -1365,7 +1567,6 @@ function getE(h)
 		case 'rjwatches.com': return _sl('app-gdpr-modal .agree-wrapper button');
 		case 'contractix.de': return _sl('.b7cConsent .b7cButton button');
 		case 'startsmarthome.de': return _sl('#dws01-modal:not(.hidden) .close-modal'); // service
-		case 'auchan.hu': return _sl('.cookie-modal__button--accept'); // online
 		case 'hech.be': return _sl('.bootbox-alert.in .btn-primary');
 		case 'forever21.com': return _sl('#cookiesPopup[style*="block"] button[onclick*="AcceptCookie"]');
 		case 'assemblymag.com': return _sl('.gdpr-policy + form[action*="gdpr"] .button[value="Accept"]');
@@ -1390,6 +1591,7 @@ function getE(h)
 		case 'giz.berlin': return _id('privacyInformationClose');
 		case 'msn.com': return _sl('#cacpageoverlay .accept, .optanon-allow-all-button, #onetrust-banner-sdk:not([style*="none"]) #onetrust-accept-btn-handler');
 		case 'bk.com': return _sl('#cookie-popup[style*="block"] .btn-primary');
+		case 'adtipp.de': return _sl('#cookie-popup .btn[onclick*="cookieOk"]');
 		case 'paravol.org': return _sl('.cookie-modal.in .btn[onclick*="agreeAndContinue"]');
 		case 'lyricstraining.com': return _sl('#privacy-update-dialog[style*="block"] .accept');
 		case 'filmweb.pl': return _sl('.rodoBoard .rodo__buttons button');
@@ -1464,13 +1666,12 @@ function getE(h)
 		case 'meurthe-et-moselle.fr': return _sl('.modal.in .btn[onclick*="CookiesOk"]'); // rando
 		case 'e3expo.com': return _sl('body > div > div[class^="view__Background"] button[class^="view__SubmitButton"]'); // live
 		case 'saudia.com': return _sl('.ui--popup[style*="block"] .approve-website-cookies #travelContinue');
-		case 'blocket.se': return _sl('#accept-ufti'); // mobil
 		case 'binance.je': return _sl('#__next > .layout > main ~ div a[href*="support.binance.je"] + div');
 		case 'casadellibro.com': return _sl('.header ~ div > button');
 		case 'autopunkt.pl': return _sl('#modal-cookies.in .cookie-save');
 		case 'hirado.hu': return _sl('#cookie:not([style]) .hms_cookeBbc_activate');
 		case 'checkvenlo.nl': return _sl('.cc-grower .cc-banner:not(.cc-invisible) .cc-btn[aria-label="allow cookies"]');
-		case 'gulbenkian.pt': return _sl('.js-cookie-consent.in .js-cookie-submit');
+		case 'gulbenkian.pt': return _sl('.cookie-modal.display-block .btn-primary');
 		case 'saa.nl': return _sl('.GDPR-popup.show .btn[ng-click*="savePrivacy"]');
 		case 'mltracker.co.uk': return _sl('#cookieModal.show .close');
 		case 'otpportalok.hu': return _sl('.pop_up_bg .cookie_button_col_btn button');
@@ -1498,7 +1699,6 @@ function getE(h)
 		case 'krefting.de': return _sl('#cookieNote.in .close');
 		case 'usercontrol.co.uk': return _sl('#cookieconfirm:not([style*="none"]) button'); // e
 		case 'viberate.io': return _sl('#modal-cookies[style*="block"] #btn-cookies-accept');
-		case 'piraeusbank.gr': return _sl('#cookie-bar.fixed .cb-enable');
 		case 'spatiicomerciale.ro': return _sl('#modalCookies[style*="block"] .btn-actiune--principal');
 		case 'snyk.io': return _sl('#cookie-disclaimer #cookie-link');
 		case 'resources.techcommunity.microsoft.com': return _sl('.has-cookie-bar #catapultCookie');
@@ -1528,9 +1728,9 @@ function getE(h)
 		case 'yello.de': return _sl('#cookieconsent[open] .js-cookie-consent-action, .modal-stage--open .js_cookie-accept');
 		case 'rambus.com': return _sl('.consent-modal[style*="block"] #consent_agree');
 		case 'kayak.pl': return _sl('.cdk-overlay-container .ok-button');
+		case 'fenb.be': return _sl('.cdk-overlay-container #acceptBtn');
 		case 'bien-zenker.de': return _sl('.cookie-settings-submitall');
 		case 'enbw.com': return _sl('.dialog.opt-in-dialog .eventelement-trackingOptIn, #cookie-overlay-modal.modal-stage--open .js_cookie-accept, .overlay-agreement .button--primary, .modal .cookie-agreement__confirm button');
-		case 'akkuteile.de': return _sl('#CookiePlus[style*="block"] #CPConfirm');
 		case 'soliver.de': return _sl('.jsPrivacyBarSubmit');
 		case 'otwarteklatki.pl': return _sl('#popup-gdpr.visible .button-gdpr-agree');
 		case 'erdinger.de': return _sl('.overlay.s-is-open .cp-confirmSelected');
@@ -1552,7 +1752,6 @@ function getE(h)
 		case 'bbva.es': return _sl('.cookiesgdpr__acceptbtn');
 		case 'amsterdamlightfestival.com': return _sl('#cookie-consent-app .cookie-consent__btn');
 		case 'blitzhangar.com': return _sl('.cookie-consent-banner__accept');
-		case 'dermasence.de': return _sl('#copr-settings-wrap[style*="block"] #copr-safe-settings');
 		case 'cinemaxx.de': return _sl('.modalCookies.active .modalCookies_button-all');
 		case 'amministrazionicomunali.it': return _sl('#cp-container:not([style*="none"]) #cookie-policy-agree-onlynecessary a');
 		case 'healthsoul.com': return _sl('#GDPRModal[style*="block"] #GDPR-button');
@@ -1569,7 +1768,6 @@ function getE(h)
 		case 'mulders-opel.nl': return _sl('.modal[style*="block"] #legal-cookie-accept');
 		case 'bricomarche.com': return _sl('.js-GlobalPopin .CookieParameters .Button--success');
 		case 'parfuemerie.de': return _sl('.fancy-box-containerCookiemanager.fancybox-opened #accept-cookies-all');
-		case 'womex.com': return _sl('.modal[style*="block"] #accept-cookies-all');
 		case 'filmboxlive.com': return _sl('.mobox-wrapper[style*="block"] #cookiePolicyOK');
 		case 'olimerca.com': return _sl('#modalCookies.in .btn[onclick*="Accept"]');
 		case 'alpro.com': return _sl('.scroll-locked div[class^="StyledCookiesModal"] button[class*="Primary"]');
@@ -1589,6 +1787,7 @@ function getE(h)
 		case 'de.vanguard': return _sl('div[data-ng-include*="disclaimer"] #acceptPolicy');
 		case 'hardware.info': return _sl('.cookie-wall__body .cookie-wall__cookie-container #decision[name="accept"]');
 		case 'swindi.de': return _sl('#privacy-modal[style*="block"] .btn-success');
+		case 'raiffeisen-immobilien.at': return _sl('#privacy-modal[style*="block"] .btn-primary');
 		case 'lifecell.net': return _sl('#cookie-modal[style*="block"] #cookie-agree');
 		case 'infineon.com': return _sl('#cookie-modal[style*="block"] .btn-submit');
 		case 'philasearch.com': return _sl('#cookie-modal[style*="block"] .button.primary');
@@ -1644,7 +1843,7 @@ function getE(h)
 		case 'zappi.io': return _sl('.legal-wrapper .btn');
 		case 'econt.com': return _sl('.gdpr-modal .btn[ng-click*="accept"]');
 		case 'eversports.de': return _sl('#js_cookie-settings-modal[style*="block"] #selectAll');
-		case 'thomas-krenn.com': return _sl('.btn[data-cookie-overlay-accept-all]');
+		case 'thomas-krenn.com': return _sl('#xtxNavigationOffCookiePolicy[aria-hidden="false"] [data-cookie-overlay-save]');
 		case 'jostchemical.com': return _sl('.privacy-banner button');
 		case 'falter.at': return _sl('#cookieconsent:not(.hidden) .btn-default');
 		case 'mcdirect.com': return _sl('#privacy-policy-root[style*="block"] .btn');
@@ -1666,7 +1865,6 @@ function getE(h)
 		case 'icould.com': return _sl('#cookie-blackout-curtain:not(.hide) .gdpr-submit');
 		case 'stryker.com': return _sl('.modal[style*="block"] .btn-yes-hcp-modal');
 		case 'kivra.se': return _sl('#___gatsby div[class*="CookieSplash"] button[class*="accept"]');
-		case 'bataclan.fr': return _sl('.mpp-popup[style*="block"] .mpp-element[data-cookieplus*="accept-cookies"]');
 		case 'umcutrecht.nl': return _sl('#cookieConsent .button[data-cookie*="yes"]');
 		case 'skb.si': return _sl('.cookiesSplash.open .cookiesSplashSaveAll');
 		case '1blu.de': return _sl('.glightbox-open .mycookie-ok-btn');
@@ -1677,7 +1875,6 @@ function getE(h)
 		case 'lektury.gov.pl': return _sl('.modal[style*="block"] .cookies-accept-btn');
 		case 'hawle.de': return _sl('#cookie-notice[style*="block"] .btn[data-dismiss]');
 		case 'pruadviser.co.uk': return _sl('#cookie-notice[style*="block"] .cookie--accept');
-		case 'marc-o-polo.com': return _sl('#cookie-settings .cookie-settings__button--all');
 		case 'omictools.com': return _sl('#cookie-policy-intro-dialog[style*="block"] .js-accept-all-intro');
 		case 'vier-pfoten.de': return _sl('.modal[style*="block"] .module-privacy__accept');
 		case 'mcl.de': return _sl('.js--mcl-accept-all-cookies');
@@ -1718,7 +1915,6 @@ function getE(h)
 		case 'der-farang.com': return _sl('.consent_accept');
 		case 'paz.de': return _sl('#cookieSelect[style*="block"] .btn-primary');
 		case 'norwegianreward.com': return _sl('#modalDataConsent[style*="block"] .re-button--success');
-		case 'mrgugu.com': return _sl('body > div > div > div[style*="bottom"] > button[aria-label="Zamknij"]');
 		case 'metro.co.uk': return _sl('body > div[class^="app"][data-project="mol-fe-cmp"] button + button');
 		case 'translit.net': return _sl('.tPechenkiButton');
 		case 'vsninfo.de': return _sl('#cookiehinweis .accept');
@@ -1727,12 +1923,12 @@ function getE(h)
 		case 'zeoob.com': return _sl('#cookies_modal[style*="block"] .btn-success');
 		case 'pocztapolska24.pl': return _sl('#terms-drop[style*="block"] #close-me');
 		case 'budapestbank.hu': return _sl('#gdpr-consent-modal .btn--primary');
-		case 'photovoltaik-shop.com': return _sl('.amgdprcookie-modal-container._show .-allow');
+		case 'werkenbijcalco.nl': return _sl('#cookie-modal-container .modal[style*="block"] .btn-submit');
 		case 'cupsell.pl': return _sl('.tingle-enabled .tingle-modal-box__footer .btn');
 		case 'cloudhealthtech.com': return _sl('.gdpr-container .btn');
 		case 'puressentiel.com': return _sl('.mfp-ready .popup-form-rgpd #btn-accepter');
 		case 'roms-download.com': return _sl('.modal[style*="block"] .btn[onclick*="kuk"]');
-		case 'sg-zertifikate.de': return _sl('.cookie-preferences .button-select-all');
+		case 'sg-zertifikate.de': return _sl('.cookie-preferences .button-focus');
 		case 'bienwaldfitness.de': return _sl('#cookie_banner_modal[style*="block"] .btn-success');
 		case 'store.leica-camera.com': return _sl('.js--modal.cookie--permission[style*="block"] .cc-dismiss');
 		case 'jointhesale.nl': return _sl('.cookie-consent-button-accept');
@@ -1761,6 +1957,7 @@ function getE(h)
 		case 'surveytandem.com': return _sl('.popup[ng-show="consentPopup"] .btn');
 		case 'eplan-software.com': return _sl('#cookie_container[style*="block"] button[data-module-acceptall]');
 		case 'stapler.de': return _sl('.modal-dialog[style*="block"] #cookies-accept-all');
+		case 'boerse-stuttgart.de': return _id('tfcookie-accept-selected');
 	}
 	
 	
