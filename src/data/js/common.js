@@ -15,7 +15,7 @@
 		#cookieNotificationModal.in .btn.accept-cookie,\
 		.cc-grower .cc-banner:not(.cc-invisible) .cc-dismiss,\
 		.has-ccwindow .cc-compliance .cc-dismiss,\
-		#myCookieModal.in .cookie-button,\
+		#cookieman-modal[style*="block"] [data-cookieman-save],\
 		.ds2-cookie-disclaimer--slidedown .ds2-cookie-disclaimer-js--submit,\
 		#mdlCookieCompliance.in .cookieClose,\
 		#cookieModal.in .js-acceptDefaultCookie,\
@@ -318,6 +318,7 @@
 		body[class*="tiki"] #cookie_consent_div:not([style*="display: none"]) #cookie_consent_checkbox,\
 		body[class*="tiki"] #cookie_consent_div:not([style*="display: none"]) input[name="cookie_consent_checkbox"],\
 		.cookiesOverlay2Box #cookiesConsentOK,\
+		#myCookieModal.in .cookie-button,\
 		div[data-cookie-path] a[href*="technologies/cookies"] + div'
 	];
 

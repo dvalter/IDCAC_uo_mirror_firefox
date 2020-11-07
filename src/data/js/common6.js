@@ -37,7 +37,8 @@ function getE(h)
 			return ['NV%5FGDPR=001'];
 		
 		case 'pee.place':
-		case 'nearest.place': // recycling, pharmacy
+		case 'nearest.place':
+		case 'postboxmap.com':
 			return ['gdprconsent=1'];
 		
 		case 'limango.de':
@@ -96,6 +97,10 @@ function getE(h)
 		case 'euroleague.net':
 		case 'eurocupbasketball.com':
 			return ['modalNotSeenEV=1', 'cookieBanner=true'];
+		
+		case 'reimageplus.com':
+		case 'xn---43-9cdulgg0aog6b.xn--p1ai':
+			return ['cookie_accepted=1'];
 		
 		case 'finantia.com': return ['finantia_cookie=active'];
 		case 'finantia.es': return ['strictly_necessary=active'];
@@ -167,7 +172,6 @@ function getE(h)
 		case 'depop.com': return ['bisc__ack=1'];
 		case 'kufar.by': return ['ck=1'];
 		case 'ezys.lt': return ['cookie-consent=3'];
-		case 'reimageplus.com': return ['cookie_accepted=1']; // e
 		case 'kalenderwoche.de': return ['cookiepolicy=0'];
 		case 'poolia.se': return ['cookiePolicyAccepted=1']; // jobb
 		case 'researchgate.net': return ['cc=1', 'cookieconsent_dismissed=true'];
@@ -266,6 +270,15 @@ function getE(h)
 		case 'sea-seek.com': return ['OK_Cook=OK'];
 		case 'dajar.cz': return ['cookieNoticeAccept=true'];
 		case 'jobalert.ie': return ['hasAcceptedCookies=true'];
+		case 'netztest.at': return ['RMBTTermsV6=true'];
+		case 'tuwien.at': return ['CookieConsent=mandatory'];
+		case 'arbeitsagentur.de': return ['cookie_consent=denied', 'personalization_consent=denied'];
+		case 'gaana.com': return ['gdprv1=1'];
+		case 'cleanairgm.com': return ['cleanair=%7B%22cookiesEssential%22%3Atrue%7D'];
+		case 'e-fundresearch.com': return ['cookieinfo={%22functional%22:true}'];
+		case 'systembolaget.se': return ['cookieConsent=[%22statistical%22%2C%22profiling%22%2C%22useful%22]'];
+		case 'maisons-phenix.com': return ['cookie-agreed-categories=%5B%22essentiels%22%5D', 'cookie-agreed=1'];
+		
 	}
 	
 	

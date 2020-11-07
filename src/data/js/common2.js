@@ -2,7 +2,7 @@ function getItem(h)
 {
 	switch (h)
 	{
-		case 'pepephone.com': return {key: 'cookiesChosen', value: 'done'};
+		case 'pepephone.com': return {strict: true, key: 'cookiesChosen', value: 'done'};
 	}
 	
 	
@@ -22,7 +22,9 @@ let	h = document.location.hostname.replace(/^w{2,3}\d*\./i, ''),
 	item = getItem(h);
 
 if (item) {
-	if (sessionStorage.getItem(item.key) != item.value) {
+	let value = sessionStorage.getItem(item.key);
+	
+	if (value == null || (item.strict && value != item.value)) {
 		sessionStorage.setItem(item.key, item.value);
 		document.location.reload();
 	}

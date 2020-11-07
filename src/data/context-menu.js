@@ -480,6 +480,13 @@ chrome.webRequest.onResponseStarted.addListener(function(tab) {
 }, {urls: ['<all_urls>'], types: ['sub_frame']});
 
 
+// FF only
+
+chrome.webRequest.onResponseStarted.addListener(function(tab) {
+	doTheMagic(tab.tabId, tab.frameId);
+}, {urls: ['*://consent.google.com/*'], types: ['beacon']});
+
+
 // Update notification
 
 chrome.runtime.onInstalled.addListener(function(d){
