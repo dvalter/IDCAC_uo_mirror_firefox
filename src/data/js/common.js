@@ -295,7 +295,7 @@
 		body.background .footer button#form_save.button[name="form[save]"],\
 		.cookie-modal .btn.accept-cookies-button[href^="/Cookie/HasConsent"],\
 		.view-cookie .js-cta-accept-cookie,\
-		.main-header div[data-module="cookie-notice"] div[class*="CookiePanelContent"]:first-child > div,\
+		.main-header [data-module="cookie-notice"] .buttons[class*="primary"],\
 		.c-cookie-consent form[name="cookie-consent"] input[type="submit"],\
 		.c-cookie-consent .c-cookie-consent__button',
 		
@@ -353,10 +353,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_322/.test(html.className))
+		if (!html || /idc0_325/.test(html.className))
 			return;
 		
-		html.className += ' idc0_322';
+		html.className += ' idc0_325';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);

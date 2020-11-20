@@ -215,7 +215,7 @@ chrome.runtime.onInstalled.addListener(function(d){
 
 function blockUrlCallback(d)
 {
-	if (tab_list[d.tabId] && !tab_list[d.tabId].whitelisted && d.url && d.url.indexOf(',') == -1)
+	if (tab_list[d.tabId] && !tab_list[d.tabId].whitelisted && d.url)
 	{
 		var clean_url = d.url.split('?')[0];
 		
@@ -484,7 +484,7 @@ chrome.webRequest.onResponseStarted.addListener(function(tab) {
 
 chrome.webRequest.onResponseStarted.addListener(function(tab) {
 	doTheMagic(tab.tabId, tab.frameId);
-}, {urls: ['*://consent.google.com/*'], types: ['beacon']});
+}, {urls: ['https://consent.google.com/*', 'https://consent.youtube.com/*'], types: ['beacon']});
 
 
 // Update notification

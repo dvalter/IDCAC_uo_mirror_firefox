@@ -278,7 +278,9 @@ function getE(h)
 		case 'e-fundresearch.com': return ['cookieinfo={%22functional%22:true}'];
 		case 'systembolaget.se': return ['cookieConsent=[%22statistical%22%2C%22profiling%22%2C%22useful%22]'];
 		case 'maisons-phenix.com': return ['cookie-agreed-categories=%5B%22essentiels%22%5D', 'cookie-agreed=1'];
-		
+		case 'elkem.com': return ['ConsentClosed=1'];
+		case 'tonershop.at': return ['cc_granted=true'];
+		case 'verce.me': return ['verceCookieApproved=true'];
 	}
 	
 	
