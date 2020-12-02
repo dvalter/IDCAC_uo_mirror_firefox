@@ -73,21 +73,6 @@
     "description": "Menu option."
   },
   
-  "menuNothanksTitle": {
-    "message": "Er du lei av nyhetsbrev-oppsprett?",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText1": {
-    "message": "Prøv min nye",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText2": {
-    "message": "nettleserutvidelse - den vil blokkere dem og så mye mer for bare 9,85€/år!",
-    "description": "Menu no thanks extension promo."
-  },
-  
   "optionsTitle": {
     "message": "Innstillinger",
     "description": "Title for the options page."

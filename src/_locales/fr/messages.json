@@ -73,21 +73,6 @@
     "description": "Menu option."
   },
   
-  "menuNothanksTitle": {
-    "message": "Fatigué des fenêtres pop-ups sur les newsletters ?",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText1": {
-    "message": "Essayez ma nouvelle extension pour navigateurs",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText2": {
-    "message": " - Cela les bloquera et même bien plus pour seulement 9,85€ par an !",
-    "description": "Menu no thanks extension promo."
-  },
-  
   "optionsTitle": {
     "message": "Paramètres",
     "description": "Title for the options page."

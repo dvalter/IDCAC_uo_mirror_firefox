@@ -102,6 +102,10 @@ function getE(h)
 		case 'xn---43-9cdulgg0aog6b.xn--p1ai':
 			return ['cookie_accepted=1'];
 		
+		case 'pruefungshelden.de':
+		case 'elopage.com':
+			return ['p_consent_accepted_shop=1%2C2'];
+		
 		case 'finantia.com': return ['finantia_cookie=active'];
 		case 'finantia.es': return ['strictly_necessary=active'];
 		case 'domhouse.pl': return ['rodo=1'];
@@ -281,6 +285,8 @@ function getE(h)
 		case 'elkem.com': return ['ConsentClosed=1'];
 		case 'tonershop.at': return ['cc_granted=true'];
 		case 'verce.me': return ['verceCookieApproved=true'];
+		case 'kjell.com': return ['ccValues=1|2'];
+		case 'aimotive.com': return ['data-protection=true'];
 	}
 	
 	

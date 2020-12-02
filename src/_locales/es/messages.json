@@ -73,21 +73,6 @@
     "description": "Menu option."
   },
   
-  "menuNothanksTitle": {
-    "message": "¿Cansado de boletines de noticias emergentes?",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText1": {
-    "message": "Prueba mi nueva extensión para navegador",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText2": {
-    "message": " - ¡los bloqueará y mucho más por solo €9.85 por año!",
-    "description": "Menu no thanks extension promo."
-  },
-  
   "optionsTitle": {
     "message": "Configuraciones",
     "description": "Title for the options page."

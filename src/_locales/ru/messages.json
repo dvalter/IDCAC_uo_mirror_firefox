@@ -73,21 +73,6 @@
     "description": "Menu option."
   },
   
-  "menuNothanksTitle": {
-    "message": "Устали от новостных всплывающих окон?",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText1": {
-    "message": "Попробуйте моё новое",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText2": {
-    "message": "расширение, которое блокирует такие окна и даже больше всего за €9.85 в год!",
-    "description": "Menu no thanks extension promo."
-  },
-  
   "optionsTitle": {
     "message": "Настройки",
     "description": "Title for the options page."

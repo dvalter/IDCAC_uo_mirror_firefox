@@ -73,21 +73,6 @@
     "description": "Menu option."
   },
   
-  "menuNothanksTitle": {
-    "message": "Pavargote nuo pasiūlymų gauti naujienas el-paštu?",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText1": {
-    "message": "Išbandykite šį naują",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText2": {
-    "message": "naršyklės įskiepį- jis užblokuos juos ir daugelį kitų pranešimų tik už €9.85 per metus!",
-    "description": "Menu no thanks extension promo."
-  },
-  
   "optionsTitle": {
     "message": "Nustatymai",
     "description": "Title for the options page."

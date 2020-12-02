@@ -73,21 +73,6 @@
     "description": "Menu option."
   },
   
-  "menuNothanksTitle": {
-    "message": "Genervt von Newsletter-Anfragen?",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText1": {
-    "message": "Teste meine neue Browser-Erweiterung",
-    "description": "Menu no thanks extension promo."
-  },
-  
-  "menuNothanksText2": {
-    "message": " – sie blockiert solche Aufforderungen und vieles mehr für nur 9,85 € im Jahr!",
-    "description": "Menu no thanks extension promo."
-  },
-  
   "optionsTitle": {
     "message": "Einstellungen",
     "description": "Title for the options page."

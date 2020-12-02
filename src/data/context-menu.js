@@ -498,7 +498,7 @@ chrome.runtime.onInstalled.addListener(function(d){
 			chrome.browserAction.setIcon({path: "icons/32.png"});
 		}, 4000);
 		
-// 		chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/whats-new/2019/?b=f"});
+		chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/whats-new/2020/"});
 		
 // 		chrome.notifications.create('update', {
 // 			type: "basic",
@@ -549,8 +549,6 @@ chrome.runtime.onMessage.addListener(function(request, info, sendResponse) {
 				chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/"});
 			else if (request.command == 'open_options_page')
 				chrome.tabs.create({url:chrome.runtime.getURL('data/options.html')});
-			else if (request.command == 'open_ecosia_page')
-				chrome.tabs.create({url:'http://bit.ly/2NCamFa'});
 			else if (request.command == 'cookie_warning_dismissed' && request.url) {
 				cookie_warning_dismissed_domains[getHostname(request.url, true)] = true;
 				

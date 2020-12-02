@@ -353,10 +353,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_325/.test(html.className))
+		if (!html || /idc0_326/.test(html.className))
 			return;
 		
-		html.className += ' idc0_325';
+		html.className += ' idc0_326';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);

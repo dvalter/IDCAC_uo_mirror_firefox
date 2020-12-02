@@ -10,12 +10,6 @@ report.textContent = chrome.i18n.getMessage("menuReport");
 options.textContent = chrome.i18n.getMessage("optionsTitle");
 
 
-document.querySelector('#nothanks h4').textContent = chrome.i18n.getMessage("menuNothanksTitle");
-var spans = document.querySelectorAll('#nothanks span');
-spans[0].textContent = chrome.i18n.getMessage("menuNothanksText1");
-spans[1].textContent = chrome.i18n.getMessage("menuNothanksText2");
-
-
 function reloadMenu(enable_refresh_button)
 {
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
@@ -91,14 +85,6 @@ support.addEventListener('click', function(e) {
 options.addEventListener('click', function(e) {
 	chrome.runtime.sendMessage({
 		command: "open_options_page",
-	}, function(message) {
-		window.close();
-	});
-});
-
-document.getElementById('ecosia').addEventListener('click', function(e) {
-	chrome.runtime.sendMessage({
-		command: "open_ecosia_page",
 	}, function(message) {
 		window.close();
 	});
