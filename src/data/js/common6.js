@@ -11,9 +11,6 @@ function getE(h)
 		case 'lyricsbox.com':
 			return ['cookieconsent=1111'];
 		
-		case 'proximus.be':
-			return (/id_cr_fiber_checktool/.test(document.location.pathname) ? ['notice_preferences=2:', 'notice_gdpr_prefs=0,1,2:'] : false);
-		
 		case 'proximustv.be':
 		case 'tmz.com':
 		case 'sap.com':
@@ -105,6 +102,10 @@ function getE(h)
 		case 'pruefungshelden.de':
 		case 'elopage.com':
 			return ['p_consent_accepted_shop=1%2C2'];
+		
+		case 'g2a.com':
+		case 'g2a.co':
+			return ['gdpr_cookie=%5B%5D'];
 		
 		case 'finantia.com': return ['finantia_cookie=active'];
 		case 'finantia.es': return ['strictly_necessary=active'];
@@ -235,7 +236,6 @@ function getE(h)
 		case 'cimri.com': return ['CimriCookiePolicy=1'];
 		case 'globalplayer.com': return ['consentUUID=382584da-af8a-469e-aedf-11ac420ec96d'];
 		case 'dehn.de': return ['cookie-agreed=1', 'cookie-processed-02=ck_1:true%2Cck_2:true'];
-		case 'g2a.com': return ['gdpr_cookie=%5B%5D'];
 		case 'minecraft.net': var d = Math.round(Date.now()/1000); return ['MSCC=' + (d - d % 86400)];
 		case 'crtm.es': return ['crtmcookiesCAnaliticas=1', 'crtmcookiesProtDatos=1'];
 		case 'computertotaal.nl': return ['SITE_COOKIE_CONSENT=True'];
@@ -287,6 +287,8 @@ function getE(h)
 		case 'verce.me': return ['verceCookieApproved=true'];
 		case 'kjell.com': return ['ccValues=1|2'];
 		case 'aimotive.com': return ['data-protection=true'];
+		case 'parcel2go.com': return ['COOKIE_PROMPT=1'];
+		case 'steigmiller.bio': return ['fvw_privacy=enabled'];
 	}
 	
 	

@@ -498,7 +498,7 @@ chrome.runtime.onInstalled.addListener(function(d){
 			chrome.browserAction.setIcon({path: "icons/32.png"});
 		}, 4000);
 		
-		chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/whats-new/2020/"});
+// 		chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/whats-new/2020/"});
 		
 // 		chrome.notifications.create('update', {
 // 			type: "basic",

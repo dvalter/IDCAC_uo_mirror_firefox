@@ -157,6 +157,7 @@
 		.btn-accecpt-cookie,\
 		#js-gdpr-accept:not(.cta),\
 		.ck-modal--cookieModalMain .ck-Button__primary,\
+		.ReactModal__Overlay--after-open .cookie-notice button + button,\
 		.ReactModal__Overlay--after-open .UPM__PrivacyModal button[type="submit"],\
 		.privacyInformationDiv .cookie-agree,\
 		#__tealiumGDPRecModal #privacy_pref_optin,\
@@ -185,10 +186,9 @@
 		#modalCookie .accept-cookie,\
 		#modalCookie.shown .button[data-action="accept-cookies"],\
 		.modal.cookie .btn[onclick*="setCookie"],\
-		#cookie-consent-button,\
+		#cookiesbanner #hidecookiesbanner,\
 		#cookiewall-buttons .accept-cookies,\
 		form[action*="cookieservice.rtl.nl/consent"] .accept-button,\
-		#cookiesbanner #hidecookiesbanner,\
 		.buttonComp.cookieAccept,\
 		.c-cookie-info .c-button.cookieAccept,\
 		#btnAcceptCookies,\
