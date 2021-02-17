@@ -171,7 +171,7 @@ function getE(h)
 		case 'archief.amsterdam': return ['verklaring=1'];
 		case 'enviam.de': return ['dws01-level=2', 'dws02-level=2'];
 		case 'quick.be': return ['cookie-policy-version=2', 'cookie-policy-accepted=1'];
-		case 'virustotal.com': return ['euConsent=1'];
+		case 'virustotal.com': return ['euConsent=1', 'tosChangedAccepted=1'];
 		case 'cmore.se': return ['cookieBannerDismissed=true'];
 		case 'choosist.com': return ['accept_cookie=1'];
 		case 'depop.com': return ['bisc__ack=1'];
@@ -289,6 +289,14 @@ function getE(h)
 		case 'aimotive.com': return ['data-protection=true'];
 		case 'parcel2go.com': return ['COOKIE_PROMPT=1'];
 		case 'steigmiller.bio': return ['fvw_privacy=enabled'];
+		case 'kinoheld.de': return ['KHCONSENT=accept'];
+		case 'calm.com': return ['has-agreed-to-cookies=true'];
+		case 'resursbank.se': return ['cookie_consent=necessary%3A1%2Cstatistics%3A0%2Cmarketing%3A0'];
+		case 'airmates.eu': return ['privacy-dialog-shown=true'];
+		case 'mentimeter.com': return ['has_approved_cookie_policy=1'];
+		case 'baukobox.de': return ['bb_dsgvo=true'];
+		case 'delta.app': return ['cookie-consent-given=true'];
+		case 'kayak.fr': return ['DATA_CONSENT=false'];
 	}
 	
 	

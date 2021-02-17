@@ -5,12 +5,12 @@ function _sl(s, c) {
 var _i = setInterval(function() {
 	var html = document.querySelector('html');
 	
-	if (!html || /idc8_326/.test(html.className))
+	if (!html || /idc8_328/.test(html.className))
 		return;
 	
 	clearInterval(_i);
 	
-	html.className += ' idc8_326';
+	html.className += ' idc8_328';
 	
 	var c = 0, l = document.location, i = setInterval(function() {
 		

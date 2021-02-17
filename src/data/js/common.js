@@ -15,7 +15,6 @@
 		#cookieNotificationModal.in .btn.accept-cookie,\
 		.cc-grower .cc-banner:not(.cc-invisible) .cc-dismiss,\
 		.has-ccwindow .cc-compliance .cc-dismiss,\
-		#cookieman-modal[style*="block"] [data-cookieman-save],\
 		.ds2-cookie-disclaimer--slidedown .ds2-cookie-disclaimer-js--submit,\
 		#mdlCookieCompliance.in .cookieClose,\
 		#cookieModal.in .js-acceptDefaultCookie,\
@@ -26,6 +25,7 @@
 		#TOS-POPUP .rhododendron-popup__button--agree,\
 		#cookie-wall #accept-cookies,\
 		#popup-wrapper .button[href*="/cookies.consent.php"],\
+		.body-wrapper[style*="faktor-fingerprint"] #acceptAll,\
 		.reveal.cookies[style*="block"] button[click*="aceptaCookies"],\
 		.mnd-cookie-modal[style*="block"] .btn.is--primary,\
 		.cookieHandler.cookieHandler--modalOpen #acceptAllCookies,\
@@ -33,8 +33,7 @@
 		#dpi-banner:not(.hidden) #btn-agree-cookie,\
 		.gh-banner.gh-banner-active #gh-cookiebanner-close,\
 		#mrktpref.notification-bar .btn-success,\
-		#cookiesplus-bas[style*="block"] .btn[name="save-basic"],\
-		#cookiesplus-basic.in .btn[name="save-basic"],\
+		.modal[id*="cookiesplus"][style*="block"] .btn[name="save-basic"],\
 		#PopinGDPRCookie[style*="block"] .jsbd-popin-ok,\
 		#modal-rodo.in .btn-primary,\
 		.cookie-compliance-modal.in .btn-primary,\
@@ -299,10 +298,10 @@
 		.c-cookie-consent form[name="cookie-consent"] input[type="submit"],\
 		.c-cookie-consent .c-cookie-consent__button',
 		
-		'.fancybox-overlay[style*="block"] #cookie-consent-simple .cookie__btn--primary,\
+		'#cookieman-modal[style*="block"] [data-cookieman-save],\
+		.fancybox-overlay[style*="block"] #cookie-consent-simple .cookie__btn--primary,\
 		ab-cookie-wall modal-footer .btn,\
 		.cookie-policy-popup[style*="block"] .button[data-cookie-policy-accept],\
-		.body-wrapper[style*="faktor-fingerprint"] #acceptAll,\
 		.cookie-consent-modal.ui-modal_open .cookie-consent-modal__accept-button,\
 		#cookiewizard[style*="block"] #accept-all-cookies,\
 		.AST-banner > div[style*="block"] .AST-accept,\
@@ -353,10 +352,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_326/.test(html.className))
+		if (!html || /idc0_328/.test(html.className))
 			return;
 		
-		html.className += ' idc0_326';
+		html.className += ' idc0_328';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);
