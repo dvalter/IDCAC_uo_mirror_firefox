@@ -1,8 +1,34 @@
 (function() {
-	var searchGroups = [
+	
+	let searchPairs = {
+		'.mfp-wrap.mfp-ready': [
+			'.cookieselection-confirm-selection',
+			'#gdpr_understandBtn',
+			'#cookiebanner .consentToAll',
+			'#cookieConsent .btn[data-cookie="accepted"]'
+		],
+		
+		'.pum-open': [
+			'.pum-active[data-popmake*="slug\\":\\"cookie"] .pum-close',
+			'.pum-active[data-popmake*="rodo"] .pum-close',
+			'.pum-active[data-popmake*="cookie-policy"] .pum-close',
+			'.pum-active[data-popmake*="cookie-zustimmung"] .pum-close',
+			'.pum-active[data-popmake*="cookie-consent"] .pum-close',
+			'.pum-active[data-popmake*="uso-cookie"] .pum-close',
+			'.pum-active[data-popmake*="cookie-notice"] .pum-close',
+			'.pum-active[data-popmake*="cookie-banner"] .pum-close',
+			'.pum-active[data-popmake*="cookie-pop"] .pum-close',
+			'.pum-active[data-popmake*="cookies-pop"] .pum-close',
+			'.pum-active[data-popmake*="informativa-cookie"] .pum-close',
+			'.pum-active[data-popmake*="assenso-cookie"] .pum-close',
+			'.pum-active[data-popmake*="pryvatnast"] .pum-close'
+		]
+	};
+	
+	let searchGroups = [
 		'.qc-cmp2-container button[mode="primary"],\
-		#CookieModal.in .btn[data-dismiss],\
 		#didomi-host .didomi-button-highlight,\
+		#CookieModal.in .btn[data-dismiss],\
 		#rgpd_video .rgpd-mask a[data-rgpd-consent],\
 		.js--modal[style*="block"] .cookie-permission--accept-button,\
 		.gdpr-modal-rider .btn-cookieaccept,\
@@ -88,13 +114,6 @@
 		.modal.in .btn.close-modal-cookie,\
 		.gdprModal--visible #accept-all-gdpr,\
 		#consent-module[style*="block"] #consent-module-text-button,\
-		.pum-active[data-popmake*="cookie-notice"] .pum-close,\
-		.pum-active[data-popmake*="cookie-banner"] .pum-close,\
-		.pum-active[data-popmake*="cookie-pop"] .pum-close,\
-		.pum-active[data-popmake*="cookies-pop"] .pum-close,\
-		.pum-active[data-popmake*="informativa-cookie"] .pum-close,\
-		.pum-active[data-popmake*="assenso-cookie"] .pum-close,\
-		.pum-active[data-popmake*="pryvatnast"] .pum-close,\
 		.modal #consentButton,\
 		#consent-modal[style*="block"] .lm_modal__modal__content__body__buttons__ok,\
 		.cookiesOverlay3Box #cookiesConsentOK,\
@@ -108,7 +127,7 @@
 		#cookie-disclaimer[style*="block"] .cc_btn_accept_all,\
 		.reveal-overlay[style*="block"] #dsgvo .cc_btn_accept_all,\
 		.reveal-overlay[style*="block"] #reveal-cookies .btn[data-save],\
-		.b-modal-banner__banner--cover .js-privacy-consent-banner__button,\
+		.b-modal-banner__banner .js-privacy-consent-banner__button,\
 		#manageCookieConsentDialog.in #btn-cookie-agreed,\
 		.fancybox-opened .bcGDPR .bcpConsentOKButton,\
 		.fancybox-opened .bcGDPR .bcpOkButton,\
@@ -136,8 +155,6 @@
 		.modal-window #gdpr-modal-agree,\
 		.privacy-overlay.ui-dialog .button.confirm-button,\
 		.wrapper.show-plack .top-view .button-wrapper .btn,\
-		.mfp-ready .wrap_gdpr .ajaxCookies[href*="status=1"],\
-		.mfp-ready #gdpr_modal #gdpr_understandBtn,\
 		.cookie_btn_accept_all,\
 		button#cookies-accept-button,\
 		#cmp-message .cmp-button[onclick*="cookieAccept"],\
@@ -320,22 +337,42 @@
 		#myCookieModal.in .cookie-button,\
 		div[data-cookie-path] a[href*="technologies/cookies"] + div'
 	];
-
-
+	
+	
 	// Search loop function
-
-	var searchGroupsLength = searchGroups.length,
+	
+	let searchGroupsLength = searchGroups.length,
+		searchPairsKeys = Object.keys(searchPairs),
+		searchPairsJoinedKeys = searchPairsKeys.join(','),
 		timeoutDuration = 300;
-
+	
 	function searchLoop(counter) {
 		setTimeout(function() {
+		
+			document.querySelectorAll(searchPairsJoinedKeys).forEach(function(box) {
+				searchPairsKeys.forEach(function(selector) {
+					if (box.matches(selector + ':not(.idcac)')) {
+						box.className += ' idcac';
+						
+						box.querySelectorAll(searchPairs[selector].join(',')).forEach(function(button) {
+							if (button.click) {
+								if (typeof chrome == 'object' && chrome.runtime)
+									chrome.runtime.sendMessage({command: "cookie_warning_dismissed", url: document.location.href});
+								
+								button.click();
+								timeoutDuration += 500;
+							}
+						});
+					}
+				});
+			});
+			
 			document.querySelectorAll(searchGroups[counter%searchGroupsLength]).forEach(function(e) {
-				if (!/idcac/.test(e.className)) {
-					var debug = 'ID: ' + e.id + '; class: ' + e.className;
-					e.className += " idcac";
+				if (e.click && !/idcac/.test(e.className)) {
+					e.className += ' idcac';
 					
 					if (typeof chrome == 'object' && chrome.runtime)
-						chrome.runtime.sendMessage({command: "cookie_warning_dismissed", debug: debug, url: document.location.href});
+						chrome.runtime.sendMessage({command: "cookie_warning_dismissed", url: document.location.href});
 					
 					e.click();
 					timeoutDuration += 500;
@@ -344,6 +381,7 @@
 			
 			if (counter < 100*searchGroupsLength)
 				searchLoop(counter+1);
+		
 		}, timeoutDuration);
 		
 		timeoutDuration += 20;
@@ -352,10 +390,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_328/.test(html.className))
+		if (!html || /idc0_329/.test(html.className))
 			return;
 		
-		html.className += ' idc0_328';
+		html.className += ' idc0_329';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);

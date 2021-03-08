@@ -8,6 +8,12 @@ function getItem(h)
 		
 		case 'phoenix.de': return {strict: false, key: 'user_anonymous_profile', value: '{"config":{"tracking":false,"userprofile":false,"youtube":false,"twitter":false,"facebook":false,"iframe":false,"video":{"useSubtitles":false,"useAudioDescription":false}},"votings":[],"msgflash":[],"history":[]}'};
 		
+		case 'klarna.com':
+			return [
+				{strict: true, key: 'trackingConsentAnalyticsKey', value: 'false'},
+				{strict: true, key: 'trackingConsentMarketingKey', value: 'false'}
+			];
+		
 		case 'krant.volkskrant.nl':
 		case 'krant.dg.nl':
 		case 'krant.demorgen.be':

@@ -107,6 +107,10 @@ function getE(h)
 		case 'g2a.co':
 			return ['gdpr_cookie=%5B%5D'];
 		
+		case 'elvenar.com':
+		case 'forgeofempires.com':
+			return ['CookieNotification=1'];
+		
 		case 'finantia.com': return ['finantia_cookie=active'];
 		case 'finantia.es': return ['strictly_necessary=active'];
 		case 'domhouse.pl': return ['rodo=1'];
@@ -267,7 +271,6 @@ function getE(h)
 		case 'waldlandwelt.de': return ['c=j'];
 		case 'pluto.tv': return ['tos_acceptance_date=1596261209788'];
 		case 'thecycleverse.com': return ['AMPLCONS_internal=true'];
-		case 'mymoria.de': return ['acceptCookies=%7B%22accept_mandatory%22%3Atrue%2C%22accept_optional%22%3Afalse%7D'];
 		case 'pagetiger.com': return ['cookie-preferences={%22acceptedAnalyticsCookie%22:true}'];
 		case 'tv-trwam.pl': return ['HAS_COOKIES_FORM_SHOWED=true', 'ARE_REQUIRED_COOKIES_ACCEPTED=true'];
 		case 'phish-test.de': return ['gtag=true'];
@@ -297,6 +300,15 @@ function getE(h)
 		case 'baukobox.de': return ['bb_dsgvo=true'];
 		case 'delta.app': return ['cookie-consent-given=true'];
 		case 'kayak.fr': return ['DATA_CONSENT=false'];
+		case 'x-kom.pl': return ['cookieAccept=true'];
+		case 'theathletic.com': return ['cookie-policy-accept=0', 'cookie-policy-optout=analyticaltracking'];
+		case 'kayak.co.uk': return ['DATA_CONSENT=true'];
+		case 'mymoria.de': return ['gatsbyConsentMandatory=true'];
+		case 'peticie.com': return ['num_times_cookie_consent_banner_shown=1'];
+		case 'tgz-ol.de': return ['cookies_consent=1'];
+		case 'dunhamssports.com': return ['dw_cookies_accepted=0'];
+		case 'evangelisch.de': return ['bigfoot_cookie-consent=true'];
+		case 'ubi2.wit.edu.pl': return ['GPRD=128'];
 	}
 	
 	

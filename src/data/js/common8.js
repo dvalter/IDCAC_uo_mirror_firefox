@@ -2,19 +2,42 @@ function _sl(s, c) {
 	return (c || document).querySelector(s);
 }
 
+
+// Example: https://consent.youtube.com/d?continue=https://www.youtube.com/watch?v%3D6fOk9AklzFk&gl=DE&hl=de&pc=yt&src=1
+
+function standAloneConsentForm(l) {
+	if (l.pathname == '/m') {
+		var e = document.querySelector('c-wiz h1 ~ div a[href*="/d?continue"]');
+		
+		if (e)
+			e.click();
+	}
+	else if (l.pathname == '/d') {
+		document.querySelectorAll('c-wiz h1 ~ div [data-is-touch-wrapper]').forEach(function(button) {
+			var next = button.parentNode.nextSibling;
+			
+			if (next && next.matches('[jsaction]'))
+				button.firstChild.click();
+		});
+		
+		document.querySelector('c-wiz form button').click();
+	}
+}
+
+
 var _i = setInterval(function() {
 	var html = document.querySelector('html');
 	
-	if (!html || /idc8_328/.test(html.className))
+	if (!html || /idc8_329/.test(html.className))
 		return;
 	
 	clearInterval(_i);
 	
-	html.className += ' idc8_328';
+	html.className += ' idc8_329';
 	
 	var c = 0, l = document.location, i = setInterval(function() {
 		
-		// the 2 step #introAgreeButton alternative may not be in use anymore
+		// the 2nd step #introAgreeButton alternative may not be in use anymore
 		
 		if (l.hostname.split('.')[0] == 'consent') {
 			var containers = document.querySelectorAll('.cui-csn-data');
@@ -46,6 +69,9 @@ var _i = setInterval(function() {
 					}
 				}
 			}
+			
+			else
+				standAloneConsentForm(l);
 		}
 		else {
 			// General privacy reminder

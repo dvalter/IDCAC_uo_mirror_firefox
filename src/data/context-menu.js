@@ -549,19 +549,8 @@ chrome.runtime.onMessage.addListener(function(request, info, sendResponse) {
 				chrome.tabs.create({url:"https://www.i-dont-care-about-cookies.eu/"});
 			else if (request.command == 'open_options_page')
 				chrome.tabs.create({url:chrome.runtime.getURL('data/options.html')});
-			else if (request.command == 'cookie_warning_dismissed' && request.url) {
+			else if (request.command == 'cookie_warning_dismissed' && request.url)
 				cookie_warning_dismissed_domains[getHostname(request.url, true)] = true;
-				
-				if (debug_mode && request.debug)
-				{
-					chrome.notifications.create('clicked', {
-						type: "basic",
-						title: "IDCAC debugging mode",
-						message: "Click element found: " + request.debug,
-						iconUrl: "icons/48.png"
-					});
-				}
-			}
 		}
 	}
 });
