@@ -476,7 +476,8 @@ chrome.webNavigation.onCommitted.addListener(function(tab) {
 
 
 chrome.webRequest.onResponseStarted.addListener(function(tab) {
-	doTheMagic(tab.tabId, tab.frameId);
+	if (tab.frameId > 0)
+		doTheMagic(tab.tabId, tab.frameId);
 }, {urls: ['<all_urls>'], types: ['sub_frame']});
 
 

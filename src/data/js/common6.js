@@ -48,7 +48,6 @@ function getE(h)
 			return ['consent=1'];
 		
 		case 'binumi.com':
-		case 'dunelm.com':
 		case 'ravi.pl':
 			return ['idcac=1'];
 		
@@ -64,7 +63,6 @@ function getE(h)
 		case 'regain.us':
 			return ['gdpr_cookie_consent_given=yes'];
 		
-		case 'planetromeo.com':
 		case 'compteur.fr':
 		case 'lebens.guru':
 			return ['cookies_accepted=1'];
@@ -309,6 +307,11 @@ function getE(h)
 		case 'dunhamssports.com': return ['dw_cookies_accepted=0'];
 		case 'evangelisch.de': return ['bigfoot_cookie-consent=true'];
 		case 'ubi2.wit.edu.pl': return ['GPRD=128'];
+		case 'outandaboutlive.co.uk': return ['cookie-control=true'];
+		case 'tesa.com': return ['cookies_informed=true'];
+		case 'turboimagehost.com': return ['cookiewarn=1'];
+		case 'mubi.com': return ['mubi-cookie-consent=allow'];
+		case 'ersatzteilshop.de': return ['cookie-preference=1'];
 	}
 	
 	

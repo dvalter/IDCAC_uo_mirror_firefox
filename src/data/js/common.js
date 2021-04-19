@@ -22,11 +22,31 @@
 			'.pum-active[data-popmake*="informativa-cookie"] .pum-close',
 			'.pum-active[data-popmake*="assenso-cookie"] .pum-close',
 			'.pum-active[data-popmake*="pryvatnast"] .pum-close'
+		],
+		
+		'.modal-open': [
+			'#PrivacyCategoryAlert[style*="block"] .btn[data-id="ConfirmSettings"]',
+			'#cookie-control-modal[style*="block"] .js-toggle-cookie-control',
+			'.kmt-ckextmodal[style*="block"] .btn[href*="accept"]'
+		],
+		
+		'.modal[style*="block"]': [
+			'#btn-cookie-config',
+			'#btn-save-config',
+			
+			'#cookieConsentAcceptOnlyFunctional',
+			'.cookie_actions .btn[onclick*="saveBasic"]',
+			'#btnCookieSettingsSaveSettings',
+			'#cookie-setselected',
+			'#rodo_form .btn',
+			'#cookieNoticeForm #saveCookies',
+			'.btn[onclick*="saveCookieSettings"]',
+			'.btn.set_essential_cookies'
 		]
 	};
 	
 	let searchGroups = [
-		'.qc-cmp2-container button[mode="primary"],\
+		'.qc-cmp2-container button[mode="secondary"],\
 		#didomi-host .didomi-button-highlight,\
 		#CookieModal.in .btn[data-dismiss],\
 		#rgpd_video .rgpd-mask a[data-rgpd-consent],\
@@ -36,8 +56,7 @@
 		#mpo[style*="block"] .submit.modal-privacy__btn[onclick*="privacyframe.accept"],\
 		.lightbox--cookie-consent .btn-cta,\
 		.js-modal-gdpr.is-active .btn[data-level="2"],\
-		#cookie-law-info-bar[style*="block"] .cli_action_button[data-cli_action="accept"],\
-		#CybotCookiebotDialogBodyButtonAccept,\
+		#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowallSelection,\
 		#cookieNotificationModal.in .btn.accept-cookie,\
 		.cc-grower .cc-banner:not(.cc-invisible) .cc-dismiss,\
 		.has-ccwindow .cc-compliance .cc-dismiss,\
@@ -59,7 +78,6 @@
 		#dpi-banner:not(.hidden) #btn-agree-cookie,\
 		.gh-banner.gh-banner-active #gh-cookiebanner-close,\
 		#mrktpref.notification-bar .btn-success,\
-		.modal[id*="cookiesplus"][style*="block"] .btn[name="save-basic"],\
 		#PopinGDPRCookie[style*="block"] .jsbd-popin-ok,\
 		#modal-rodo.in .btn-primary,\
 		.cookie-compliance-modal.in .btn-primary,\
@@ -92,7 +110,6 @@
 		.show-modal .cookie-settings-manager-container .initial-dialog .js-accept-button,\
 		.cookie-settings-manager-container .initial-dialog[style*="block"] .js-accept-button,\
 		.gdprLightbox[data-module="gdprLightbox"] ._type_gdpr_agree,\
-		#cookie-control-modal[style*="block"] .btn,\
 		.cookie.showa #Row1_Column1_Cell1_CookieSettings_AdvancedSaveAccept,\
 		#core-cookie-container[style*="block"] .btn--agree,\
 		.cookie-consent-modal._show .action-primary,\
@@ -127,7 +144,6 @@
 		#cookie-disclaimer[style*="block"] .cc_btn_accept_all,\
 		.reveal-overlay[style*="block"] #dsgvo .cc_btn_accept_all,\
 		.reveal-overlay[style*="block"] #reveal-cookies .btn[data-save],\
-		.b-modal-banner__banner .js-privacy-consent-banner__button,\
 		#manageCookieConsentDialog.in #btn-cookie-agreed,\
 		.fancybox-opened .bcGDPR .bcpConsentOKButton,\
 		.fancybox-opened .bcGDPR .bcpOkButton,\
@@ -168,8 +184,6 @@
 		.remodal-wrapper[style*="block"] .cookie-notice .remodal-close,\
 		#cookie-wall:not([hidden]) #cookie-wall-accept,\
 		#gdpr.modal.active #gdprNotice #accept,\
-		#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll,\
-		#CybotCookiebotDialogBodyLevelButtonAccept,\
 		.btn-accecpt-cookie,\
 		#js-gdpr-accept:not(.cta),\
 		.ck-modal--cookieModalMain .ck-Button__primary,\
@@ -351,9 +365,7 @@
 		
 			document.querySelectorAll(searchPairsJoinedKeys).forEach(function(box) {
 				searchPairsKeys.forEach(function(selector) {
-					if (box.matches(selector + ':not(.idcac)')) {
-						box.className += ' idcac';
-						
+					if (box.matches(selector)) {
 						box.querySelectorAll(searchPairs[selector].join(',')).forEach(function(button) {
 							if (button.click) {
 								if (typeof chrome == 'object' && chrome.runtime)
@@ -390,10 +402,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_329/.test(html.className))
+		if (!html || /idc0_330/.test(html.className))
 			return;
 		
-		html.className += ' idc0_329';
+		html.className += ' idc0_330';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);

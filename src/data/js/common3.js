@@ -5,6 +5,7 @@ function getItem(h)
 		case 'm.aliexpress.com': return {strict: false, key: 'MSITE_GDPR', value: 'true'};
 		case 'programmitv.it': return {strict: false, key: 'privacy_choices_made', value: 'OK'};
 		case 'nexus.gg': return {strict: true, key: 'cookie-notice:accepted', value: 'true'};
+		case 'streamelements.com': return {strict: true, key: 'StreamElements.gdprNoticeAccepted', value: 'true'};
 		
 		case 'phoenix.de': return {strict: false, key: 'user_anonymous_profile', value: '{"config":{"tracking":false,"userprofile":false,"youtube":false,"twitter":false,"facebook":false,"iframe":false,"video":{"useSubtitles":false,"useAudioDescription":false}},"votings":[],"msgflash":[],"history":[]}'};
 		
