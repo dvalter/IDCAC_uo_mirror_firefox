@@ -457,7 +457,11 @@ function doTheMagic(tabId, frameId, anotherTry)
 			if (currentTry == 5)
 				return;
 			
-			return doTheMagic(tabId, frameId || 0, currentTry + 1);
+			setTimeout(function() {
+				doTheMagic(tabId, frameId || 0, currentTry + 1)
+			}, 300);
+			
+			return;
 		}
 		
 		

@@ -20,15 +20,6 @@ function getE(h)
 		case 'hoernews.de':
 			return ['cookieconsent_status=dismiss'];
 		
-		case 'pinterest.com':
-		case 'pinterest.co.uk':
-		case 'pinterest.de':
-		case 'pinterest.fr':
-		case 'pinterest.ru':
-		case 'pinterest.es':
-		case 'pinterest.at':
-			return ['euCookieBanner=true']; // mobile
-		
 		case 'newegg.com':
 		case 'newegg.ca':
 			return ['NV%5FGDPR=001'];
@@ -141,7 +132,6 @@ function getE(h)
 		case 'fightful.com': return ['gdpr_popup_hide=checked'];
 		case 'tropicana.fr': return ['tropcookie=true'];
 		case 'foodetective.co': return ['cookiesAgreement=accepted'];
-		case 'moebel.de': return ['c_accept=1'];
 		case 'hrkgame.com': return ['gdpralert=done'];
 		case 'quandoo.at': return ['quandoo_cookie_policy=accepted'];
 		case 'grouperf.com': return ['cookie_rgpd=1']; // subdomains
@@ -276,7 +266,6 @@ function getE(h)
 		case 'dajar.cz': return ['cookieNoticeAccept=true'];
 		case 'jobalert.ie': return ['hasAcceptedCookies=true'];
 		case 'netztest.at': return ['RMBTTermsV6=true'];
-		case 'tuwien.at': return ['CookieConsent=mandatory'];
 		case 'arbeitsagentur.de': return ['cookie_consent=denied', 'personalization_consent=denied'];
 		case 'gaana.com': return ['gdprv1=1'];
 		case 'cleanairgm.com': return ['cleanair=%7B%22cookiesEssential%22%3Atrue%7D'];
@@ -312,6 +301,8 @@ function getE(h)
 		case 'turboimagehost.com': return ['cookiewarn=1'];
 		case 'mubi.com': return ['mubi-cookie-consent=allow'];
 		case 'ersatzteilshop.de': return ['cookie-preference=1'];
+		case 'svenskaspel.se': return ['cookie_consent={\"ad\":false,\"personalized\":false,\"analytics\":false,\"provision\":false,\"version\":1}'];
+		case 'restegourmet.de': return ['consent_accepted=1'];
 	}
 	
 	

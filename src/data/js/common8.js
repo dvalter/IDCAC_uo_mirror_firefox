@@ -10,12 +10,12 @@ function _id(s) {
 var _i = setInterval(function() {
 	var html = _sl('html');
 	
-	if (!html || /idc8_331/.test(html.className))
+	if (!html || /idc8_332/.test(html.className))
 		return;
 	
 	clearInterval(_i);
 	
-	html.className += ' idc8_331';
+	html.className += ' idc8_332';
 	
 	var c = 0, l = document.location, i = setInterval(function() {
 		
@@ -24,6 +24,17 @@ var _i = setInterval(function() {
 		if (l.hostname.split('.')[0] == 'consent') {
 			if (l.pathname == '/m') {
 				e = _sl('form[action*="//consent."][action$="/s"] button');
+				
+				if (e)
+					e.click();
+			}
+			
+			
+			// Being displayed occasionally. A/B testing?
+			// https://wap.google.com/search?q=test&gl=nl&hl=nl&gbv=2&ucbcb=1&ei=RGMPYdWdL_-F9u8Pg5a3mAI
+			
+			else if (l.pathname == '/ml') {
+				e = _sl('form[action*="//consent."][action$="/s"] .button');
 				
 				if (e)
 					e.click();

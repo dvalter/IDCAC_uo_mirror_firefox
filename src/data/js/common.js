@@ -1,15 +1,34 @@
 (function() {
 	
 	let searchPairs = {
+		'.message-container': [
+			'.sp_choice_type_12',
+			'.sp_choice_type_SAVE_AND_EXIT',
+			'div:only-of-type > .sp_choice_type_ACCEPT_ALL'
+		],
+		
 		'.mfp-wrap.mfp-ready': [
 			'.cookieselection-confirm-selection',
 			'#gdpr_understandBtn',
-			'#cookiebanner .consentToAll',
-			'#cookieConsent .btn[data-cookie="accepted"]'
+			'#cookiebanner .button-row > :not(.consentToAll)',
+			'#cookieConsent .btn[data-cookie="accepted"]',
+			'.avia-cookie-close-bar'
 		],
 		
 		'.reveal-overlay[style*="block"]': [
-			'a[onclick*="AcceptStrictOnlyCookie"]'
+			'a[onclick*="AcceptStrictOnlyCookie"]',
+			'[data-cookieman-save]:not([data-cookieman-accept-all]):not(.hide)'
+		],
+ 
+		'.fancybox-opened': [
+			'.bcGDPR .bcOpenPrivacySettings',
+			'.bcGDPR .bcRadioRefuse',
+			'.bcGDPR #bcSubmitConsent',
+			'.bcGDPR .bcpConsentCancelButton'
+		],
+ 
+		'.fancybox-is-open': [
+			'#cookieModal .btn[data-type="required"]'
 		],
  
 		'.pum-open': [
@@ -40,6 +59,9 @@
 			'#btn-cookie-config',
 			'#btn-save-config',
 			
+			'#btn-configure-cookies',
+			'#user_cookies_form_save + #refuse-all-cookies',
+			
 			'#cookieConsentAcceptOnlyFunctional',
 			'.cookie_actions .btn[onclick*="saveBasic"]',
 			'#btnCookieSettingsSaveSettings',
@@ -55,13 +77,20 @@
 			'a[onclick="setConsentSelect()"]',
 			'.container_acceptcookies .btn[name="save"]',
 			'#cookieSelectForm .btn[type="submit"]',
-			'button[data-tracking="ACCEPT_REQUIRED_COOKIES"]'
+			'button[data-tracking="ACCEPT_REQUIRED_COOKIES"]',
+			'#aceptarCookiesObligatorias',
+			'[data-cookieman-save]:not([data-cookieman-accept-all]):not([style*="none"])',
+			'.cookie-manager-save',
+			'.adapt-cookies .js-save-preferences',
+			'#btnDeny.js-gdpr-submit'
 		]
 	};
 	
 	let searchGroups = [
 		'.qc-cmp2-summary-buttons button[mode="secondary"],\
 		.qc-cmp2-buttons-desktop > button:first-child,\
+		#accept_consent_box a[onclick*="_sp_.loadPrivacyManagerModal"],\
+		.OffsetContainer a[href="#sp_privacy_manager"],\
 		#didomi-host .didomi-button-highlight:not([class*="paywall"]),\
 		#CookieModal.in .btn[data-dismiss],\
 		#rgpd_video .rgpd-mask a[data-rgpd-consent],\
@@ -160,8 +189,6 @@
 		.reveal-overlay[style*="block"] #dsgvo .cc_btn_accept_all,\
 		.reveal-overlay[style*="block"] #reveal-cookies .btn[data-save],\
 		#manageCookieConsentDialog.in #btn-cookie-agreed,\
-		.fancybox-opened .bcGDPR .bcpConsentOKButton,\
-		.fancybox-opened .bcGDPR .bcpOkButton,\
 		.fancybox-opened #gdpr-yes,\
 		#cookie_form #accepted,\
 		#PrivacySettings.in .bootstrap-switch-id-PrivacySettingsAgreeToAll .bootstrap-switch-default,\
@@ -323,7 +350,6 @@
 		.CookieSplashPage #NextButton,\
 		#cookieconsent1.accept,\
 		#jakoekies,\
-		.fancybox-opened #bcSubmitConsentToAll,\
 		.btn-accept[href*="coockie"],\
 		.btn-accept[href*="cookie"],\
 		.btn-accept[href*="Cookie"],\
@@ -344,8 +370,7 @@
 		.c-cookie-consent form[name="cookie-consent"] input[type="submit"],\
 		.c-cookie-consent .c-cookie-consent__button',
 		
-		'#cookieman-modal[style*="block"] [data-cookieman-save],\
-		.fancybox-overlay[style*="block"] #cookie-consent-simple .cookie__btn--primary,\
+		'.fancybox-overlay[style*="block"] #cookie-consent-simple .cookie__btn--primary,\
 		ab-cookie-wall modal-footer .btn,\
 		.cookie-policy-popup[style*="block"] .button[data-cookie-policy-accept],\
 		.cookie-consent-modal.ui-modal_open .cookie-consent-modal__accept-button,\
@@ -382,7 +407,9 @@
 				searchPairsKeys.forEach(function(selector) {
 					if (box.matches(selector)) {
 						box.querySelectorAll(searchPairs[selector].join(',')).forEach(function(button) {
-							if (button.click) {
+							if (button.click && !button.classList.contains('idcac')) {
+								button.classList.add('idcac');
+								
 								if (typeof chrome == 'object' && chrome.runtime)
 									chrome.runtime.sendMessage({command: "cookie_warning_dismissed", url: document.location.href});
 								
@@ -395,8 +422,8 @@
 			});
 			
 			document.querySelectorAll(searchGroups[counter%searchGroupsLength]).forEach(function(e) {
-				if (e.click && !/idcac/.test(e.className)) {
-					e.className += ' idcac';
+				if (e.click && !e.classList.contains('idcac')) {
+					e.classList.add('idcac');
 					
 					if (typeof chrome == 'object' && chrome.runtime)
 						chrome.runtime.sendMessage({command: "cookie_warning_dismissed", url: document.location.href});
@@ -417,10 +444,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_331/.test(html.className))
+		if (!html || /idc0_332/.test(html.className))
 			return;
 		
-		html.className += ' idc0_331';
+		html.className += ' idc0_332';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);

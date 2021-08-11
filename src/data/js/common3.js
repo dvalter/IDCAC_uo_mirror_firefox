@@ -2,6 +2,7 @@ function getItem(h)
 {
 	switch (h)
 	{
+		case 'eqmac.app': return {strict: false, key: 'EQM_PRIVACY_CONSENT_CHOSEN', value: 'true'};
 		case 'figuya.com': return {strict: false, key: 'cookie-dialog', value: 'closed'};
 		case 'scoodleplay.be': return {strict: false, key: 'scoodleAllowCookies', value: 'true'};
 		case 'lifesum.com': return {strict: false, key: 'accepted-cookies', value: '[]'};
