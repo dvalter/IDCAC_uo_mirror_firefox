@@ -76,10 +76,6 @@ function getE(h)
 		case 'prodyna.co.uk':
 			return ['prodyna-cookies=ALL'];
 		
-		case 'hotcleaner.com':
-		case 'mycinema.pro':
-			return ['CONSENT=200827NN'];
-		
 		case 'euroleague.net':
 		case 'eurocupbasketball.com':
 			return ['modalNotSeenEV=1', 'cookieBanner=true'];
@@ -136,7 +132,6 @@ function getE(h)
 		case 'quandoo.at': return ['quandoo_cookie_policy=accepted'];
 		case 'grouperf.com': return ['cookie_rgpd=1']; // subdomains
 		case 'insidebruegel.net': return ['InsideBruegel=init'];
-		case 'oe24.at': return ['oe24ConsentCookie=1'];
 		case 'szukajwarchiwach.pl': return ['info_closed=1'];
 		case 'jow.fr': return ['CNIL=OK'];
 		case 'dwell.com': return ['gdpr=1'];
@@ -234,7 +229,6 @@ function getE(h)
 		case 'vodafoneziggo.nl': return ['cookies-accepted=true'];
 		case 'frankfurt.de': return ['cookieAccepted=needed---piwik'];
 		case 'hackerrank.com': return ['show_cookie_banner=false'];
-		case 'app.wooclap.com': return ['wc__cookie-consent=true'];
 		case 'kfc.ru': return ['cookieAccess=1'];
 		case 'radiodienste.de': return ['cookieinfo=1'];
 		case 'creditkarma.co.uk': return ['cc_cookie_accept=cc_cookie_accept'];
@@ -266,7 +260,6 @@ function getE(h)
 		case 'dajar.cz': return ['cookieNoticeAccept=true'];
 		case 'jobalert.ie': return ['hasAcceptedCookies=true'];
 		case 'netztest.at': return ['RMBTTermsV6=true'];
-		case 'arbeitsagentur.de': return ['cookie_consent=denied', 'personalization_consent=denied'];
 		case 'gaana.com': return ['gdprv1=1'];
 		case 'cleanairgm.com': return ['cleanair=%7B%22cookiesEssential%22%3Atrue%7D'];
 		case 'e-fundresearch.com': return ['cookieinfo={%22functional%22:true}'];

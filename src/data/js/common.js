@@ -11,13 +11,14 @@
 			'.cookieselection-confirm-selection',
 			'#gdpr_understandBtn',
 			'#cookiebanner .button-row > :not(.consentToAll)',
+			'#cookiebanner .confirmSelection',
 			'#cookieConsent .btn[data-cookie="accepted"]',
 			'.avia-cookie-close-bar'
 		],
 		
 		'.reveal-overlay[style*="block"]': [
-			'a[onclick*="AcceptStrictOnlyCookie"]',
-			'[data-cookieman-save]:not([data-cookieman-accept-all]):not(.hide)'
+			'[data-cookieman-save]:not([data-cookieman-accept-all]):not(.hide)',
+			'#CookieModalStrictOnlyLink'
 		],
  
 		'.fancybox-opened': [
@@ -79,10 +80,12 @@
 			'#cookieSelectForm .btn[type="submit"]',
 			'button[data-tracking="ACCEPT_REQUIRED_COOKIES"]',
 			'#aceptarCookiesObligatorias',
+			'.btn[href="#cookieman-settings"]',
 			'[data-cookieman-save]:not([data-cookieman-accept-all]):not([style*="none"])',
 			'.cookie-manager-save',
 			'.adapt-cookies .js-save-preferences',
-			'#btnDeny.js-gdpr-submit'
+			'#btnDeny.js-gdpr-submit',
+			'#manageCookies ~ #confirmCookies'
 		]
 	};
 	
@@ -90,7 +93,7 @@
 		'.qc-cmp2-summary-buttons button[mode="secondary"],\
 		.qc-cmp2-buttons-desktop > button:first-child,\
 		#accept_consent_box a[onclick*="_sp_.loadPrivacyManagerModal"],\
-		.OffsetContainer a[href="#sp_privacy_manager"],\
+		.OffsetContainer div[data-component="ConsentLayer"] a[href="#sp_privacy_manager"],\
 		#didomi-host .didomi-button-highlight:not([class*="paywall"]),\
 		#CookieModal.in .btn[data-dismiss],\
 		#rgpd_video .rgpd-mask a[data-rgpd-consent],\
@@ -279,7 +282,6 @@
 		#js-cookie-wall[style*="block"] #js-cookie-wall-accept,\
 		#termsandconds.in #acceptterms,\
 		.ui-dialog.open #CookiePopup form .btn,\
-		#cookieOverlayModal.in .cookie-overlay-btn,\
 		.cc-window.cc-type-opt-in:not(.cc-invisible) .cc-allow,\
 		#modalCookie.show .cookie-accept,\
 		#cookieform input.modal__submit,\
@@ -301,7 +303,6 @@
 		#btn-allow-cookie,\
 		.modal-cookie-warning .modal-close,\
 		.cookiemessage__button--accept,\
-		button[onclick^="acceptCookie"],\
 		.cookieWallContent .ok-cookies,\
 		#cookie-master #acceptCookies,\
 		.cookie-wall .cookie-button,\
