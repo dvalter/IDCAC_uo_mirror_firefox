@@ -35,7 +35,8 @@
 			'#cookieConsent .btn[data-cookie="accepted"]',
 			'.avia-cookie-close-bar',
 			'.cookies-save-and-close-btn',
-			'a[onclick*="SaveCookieSettings"]'
+			'a[onclick*="SaveCookieSettings"]',
+			'.cookie-consent .accept-selection'
 		],
 		
 		'.reveal-overlay[style*="block"]': [
@@ -155,14 +156,15 @@
 			'.ModalCookies__deny',
 			'.gdcc-save-consent[data-gdcc-select="-"]',
 			'#cookies-modal-save',
-			'.btn[form*="trocookie"][value*="save"]'
+			'.btn[form*="trocookie"][value*="save"]',
+			'.js-declineAllCookies'
 		]
 	};
 	
 	let searchGroups = [
 		'.qc-cmp2-summary-buttons button[mode="secondary"],\
 		.qc-cmp2-buttons-desktop > button:first-child,\
-		#didomi-popup .didomi-button-highlight:not([class*="paywall"]),\
+		#didomi-popup .didomi-button-highlight:not([class*="paywall"]):not([class*="disagree"]),\
 		#CookieModal.in .btn[data-dismiss],\
 		#rgpd_video .rgpd-mask a[data-rgpd-consent],\
 		.js--modal[style*="block"] .cookie-permission--accept-button,\
@@ -475,9 +477,9 @@
 								
 								button.click();
 								
-								setTimeout(function() {
-									if (button) button.click();
-								}, 500);
+								// The 2nd click is just to be sure. Avoid when a double click breaks the process.
+								if (selector != '.message-container')
+									setTimeout(function() { if (button) button.click(); }, 500);
 								
 								timeoutDuration += 500;
 							}
@@ -514,10 +516,10 @@
 	var start = setInterval(function() {
 		var html = document.querySelector('html');
 		
-		if (!html || /idc0_339/.test(html.className))
+		if (!html || /idc0_340/.test(html.className))
 			return;
 		
-		html.className += ' idc0_339';
+		html.className += ' idc0_340';
 		searchLoop(0);
 		clearInterval(start);
 	}, 500);

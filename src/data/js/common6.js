@@ -236,8 +236,8 @@ function getE(h)
 		case 'ersatzteilshop.de': return ['cookie-preference=1'];
 		case 'svenskaspel.se': return ['cookie_consent={\"ad\":false,\"personalized\":false,\"analytics\":false,\"provision\":false,\"version\":2}'];
 		case 'restegourmet.de': return ['consent_accepted=1'];
-		case 'cire.pl': return ['APP_COOKIES_POLICY=true', 'APP_COOKIES_TERMS_AND_CONDITIONS=true'];
 		case 'sachsenenergie.de': return ['cookiesAccepted=true'];
+		case 'cire.pl': return ['APP_A_COOKIES_TERMS_AND_CONDITIONS=true', 'APP_A_COOKIES_FUNCTIONAL=false', 'APP_A_COOKIES_PERFORMANCE=false', 'APP_A_COOKIES_MARKETING=false', 'APP_A_COOKIES_POLICY=true'];
 	}
 	
 	

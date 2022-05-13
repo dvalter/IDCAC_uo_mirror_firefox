@@ -13586,7 +13586,19 @@ a.optanon-show-settings,
 #brCookieBanner,
 .js-notification-cookie-banner,
 #_cp_wall > #_cp_backdrop,
-.cookie-alert-overlay
+.cookie-alert-overlay,
+#simpleCookieConsent-popup,
+.new-cookie-popup,
+#wapiti-cookie-banner,
+app-cookielayer,
+.message-overlay--cookie,
+#ifab-cookie-banner,
+#gdpr_consent_notification,
+.cc-banner-granular,
+.cookie-container-wrapper,
+.cc-bespoke-button,
+.consent-wrap-outer[style*="5000"],
+#snippet--cookieSettings
 
 /* 13608 */
 {display:none !important; height:0 !important; z-index:-99999 !important; visibility:hidden !important; width:0 !important; overflow:hidden !important}
